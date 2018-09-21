@@ -13,6 +13,12 @@ This site is under active development by NHS Digital and is intended to provide 
 
 The EMS Event Message Bundle Structure page has been update to include clarification on the use of absolute URL references to Organization resources via the [FHIR ODS Lookup API](https://developer.nhs.uk/apis/ods).
 
+**PDS Change of GP**
+
+Business Effective from date - change from Mandatory to Required 
+System Effective from date - change from Mandatory to Required 
+
+
 **Error Handling**
 
 The specification has been updated to include guidance on [Error Handling](explore_errors.html).
