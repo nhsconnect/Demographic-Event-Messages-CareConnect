@@ -15,8 +15,8 @@ The EMS Event Message Bundle Structure page has been update to include clarifica
 
 **PDS Change of GP**
 
-Business Effective from date - change from Mandatory to Required 
-System Effective from date - change from Mandatory to Required 
+- Business Effective from date - change from Mandatory to Required 
+- System Effective from date - change from Mandatory to Required 
 
 
 **Error Handling**
