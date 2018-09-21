@@ -9,7 +9,7 @@ toc: false
 
 ## Introduction ##
 
-This specification details the FHIR components required to fulfill the data item requirements of the following Demographics Update Event Messages:
+This specification details the FHIR components required to fulfill the data item requirements of the following Demographics Update Event Messages, sharing updates made to demographic information held by the Personal Demographics Service (PDS): 
 
 - PDS Birth Notification
 - PDS Change of GP
