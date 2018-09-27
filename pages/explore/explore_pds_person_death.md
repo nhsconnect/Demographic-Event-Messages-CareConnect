@@ -31,10 +31,6 @@ The data item requirements are expected to be fulfilled as below:
 | Death Time                        | CareConnect-EMS-Patient-1           | deceased                       | Mandatory                   |
 | Notified Date                     | EMS-PDS-PersonDeath-Communication-1 | sent                           | Mandatory                   |
 | Status of Death Notification      | EMS-PDS-PersonDeath-Communication-1 | personDeathStatus              | Required                    |
-| Death Cause Comment               | EMS-PDS-PersonDeath-Communication-1 | deathCauseComment              | Required                    |
-| Death Cause Identification Method | EMS-PDS-PersonDeath-Communication-1 | deathCauseIdentificationMethod | Required                    |
-| Death Location Type               | EMS-PDS-PersonDeath-Communication-1 | deathLocationType              | Required                    |
-
 
 
 
