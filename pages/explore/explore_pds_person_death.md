@@ -30,7 +30,7 @@ The data item requirements are expected to be fulfilled as below:
 | Death Date                        | CareConnect-EMS-Patient-1           | deceased                       | Mandatory                   |
 | Death Time                        | CareConnect-EMS-Patient-1           | deceased                       | Mandatory                   |
 | Notified Date                     | EMS-PDS-PersonDeath-Communication-1 | sent                           | Mandatory                   |
-| Status of Death Notification      | EMS-PDS-PersonDeath-Communication-1 | personDeathStatus              | Required                    |
+| Status of Death Notification      | CareConnect-EMS-Patient-1 		| personDeathStatus              | Required                    |
 
 
 
