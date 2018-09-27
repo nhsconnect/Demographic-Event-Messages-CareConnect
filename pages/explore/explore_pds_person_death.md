@@ -19,7 +19,7 @@ The PDS Person Death event message bundle is expected to include a combination o
 | [EMS-HealthcareService-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-HealthcareService-1)                   |
 | [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1)                     |
 | [EMS-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Communication-1)                       |
-| [EMS-PDS-DeathNotification-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-PDS-PersonDeath-Communication-1) |
+
 
 ## Data item requirements  ##
 
@@ -29,7 +29,7 @@ The data item requirements are expected to be fulfilled as below:
 |-----------------------------------|---------------------------------|--------------------------------|-----------------------------|
 | Death Date                        | CareConnect-EMS-Patient-1           | deceased                       | Mandatory                   |
 | Death Time                        | CareConnect-EMS-Patient-1           | deceased                       | Mandatory                   |
-| Notified Date                     | EMS-PDS-PersonDeath-Communication-1 | sent                           | Mandatory                   |
+| Notified Date                     | EMS-Communication-1 | sent                           | Mandatory                   |
 | Status of Death Notification      | CareConnect-EMS-Patient-1 		| personDeathStatus              | Required                    |
 
 
