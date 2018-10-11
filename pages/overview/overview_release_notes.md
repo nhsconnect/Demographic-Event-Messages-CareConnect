@@ -24,6 +24,10 @@ The EMS Event Message Bundle Structure page has been update to include clarifica
 - Business Effective from date - change from Mandatory to Required 
 - System Effective from date - change from Mandatory to Required
 
+**PDS Birth Notification**
+- Delivery Place Type - change from Mandatory to Required
+
+
 **Error Handling**
 
 The specification has been updated to include guidance on [Error Handling](explore_errors.html).
