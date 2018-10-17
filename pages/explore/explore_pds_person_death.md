@@ -27,10 +27,11 @@ The data item requirements are expected to be fulfilled as below:
 
 | PDS Person Death data item name   | FHIR Resource                   | FHIR element                   | Mandatory/Optional/Required |
 |-----------------------------------|---------------------------------|--------------------------------|-----------------------------|
-| Death Date                        | CareConnect-EMS-Patient-1           | deceased                       | Mandatory                   |
-| Death Time                        | CareConnect-EMS-Patient-1           | deceased                       | Mandatory                   |
+| Death Date                        | CareConnect-EMS-Patient-1           | deceased                       | Required                   |
+| Death Time                        | CareConnect-EMS-Patient-1           | deceased                       | Required                   |
 | Notified Date                     | EMS-Communication-1 | sent                           | Mandatory                   |
-| Status of Death Notification      | CareConnect-EMS-Patient-1 		| personDeathStatus              | Required                    |
+| Status of Death Notification      | CareConnect-EMS-Patient-1 		| deathNotificationStatus (extension)              | Required                    |
+| System Effective Date      | CareConnect-EMS-Patient-1 		| deathNotificationStatus (extension)             | Required                    |
 
 
 
