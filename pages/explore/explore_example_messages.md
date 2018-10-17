@@ -13,4 +13,4 @@ XML example messages can be found under the 'Examples' tab on the [EMS-Bundle-1]
 
 **JSON**
 
-JSON example messages can be found in the 'Examples' directory of the [STU3-FHIR-Assets](https://github.com/nhsconnect/STU3-FHIR-Assets/tree/develop) repository on GitHub.
+JSON example messages are currently not within the scope of the Events Management Service.

@@ -11,12 +11,12 @@ toc: false
 
 This Implementation Guide details the FHIR components required to fulfill the data item requirements of the following Demographics Update Event Messages, sharing updates made to demographic information held by the Personal Demographics Service (PDS): 
 
-- PDS Birth Notification
-- PDS Change of GP
-- PDS Change of Address
-- PDS Person Death
+- [PDS Birth Notification](explore_pds_birth_notification.html)
+- [PDS Change of Address](explore_pds_change_of_address.html)
+- [PDS Change of GP](explore_pds_change_of_gp.html)
+- [PDS Person Death](xplore_pds_person_death.html)
 
-These communications will be published or received by the [Events Management Service](https://developer.nhs.uk/library/interoperability/events-management-service) (EMS).
+These communications will be published by the [Events Management Service](https://developer.nhs.uk/library/interoperability/events-management-service) (EMS).
 
 ## [INTEROPen](http://www.interopen.org) ##
 
