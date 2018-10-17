@@ -12,5 +12,3 @@ This Demographic Update Event Message Specification supports the following commu
 ## References ##
 
 [Health Developer Network - Events Management Service](https://developer.nhs.uk/library/interoperability/events-management-service/)
-
-[Health Developer Network - Digital Child Health](https://developer.nhs.uk/library/interoperability/digital-child-health/)
