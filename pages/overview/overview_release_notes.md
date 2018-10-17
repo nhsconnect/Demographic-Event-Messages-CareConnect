@@ -24,6 +24,23 @@ The EMS Event Message Bundle Structure page has been update to include clarifica
 - Business Effective from date - change from Mandatory to Required 
 - System Effective from date - change from Mandatory to Required
 
+**PDS Change of GP**
+
+ - Current Address Type - Changed to Required
+ - Address Line 1 or 2 - Changed to Required
+ - Address Line 3 - Changed to Optional
+ - Address Line 4 - Changed to Required
+ - Address Line 5 - Changed to Optional
+ - Postcode - Changed to Required
+ - PAF Key - Changed to Optional
+ - Address Description - Changed to Required
+ - Address Effective To Date - Changed to Optional
+ - Previous Address Type - Changed to Required
+ - Previous Address - Changed to Required
+ - Previous Postcode - Changed to Required
+ - Previous Address Description - Changed to Required
+ - Previous Address Effective To Date - Changed to Optional 
+
 **PDS Birth Notification**
 - Delivery Place Type - change from Mandatory to Required
 
