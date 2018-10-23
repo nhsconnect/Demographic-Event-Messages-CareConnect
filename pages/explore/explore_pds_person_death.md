@@ -30,7 +30,7 @@ The PDS Person Death event message bundle is expected to include a combination o
 | `extension(eventMessageType)` | Fixed value: `new` | Fixed value: `new` | Fixed value: `new` |
 | `event` | Fixed value: `PDS004 (PDS Person Death)` | Fixed value: `PDS004 (PDS Person Death)` | Fixed value: `PDS004 (PDS Person Death)` |
 | **EMS-Communication-1 Resource** |
-| `status` | Fixed value: `completed` | Fixed value: `completed` | Fixed value: `entered-in-error` |
+| `status` | Fixed value: `completed` | Fixed value: `completed` | Fixed value: `completed` |
 | **CareConnect-EMS-Patient-1** |
 | `extension (deathNotificationStatus)` | Fixed value: 1 (Informal) | Fixed value: 2 (Formal) | **extension not included in resource** |
 | `deceased` | element populated with dateTime of death | element populated with dateTime of death | **element not included in resource** |
