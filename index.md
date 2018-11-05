@@ -14,7 +14,7 @@ This Implementation Guide details the FHIR components required to fulfill the da
 - [PDS Birth Notification](explore_pds_birth_notification.html)
 - [PDS Change of Address](explore_pds_change_of_address.html)
 - [PDS Change of GP](explore_pds_change_of_gp.html)
-- [PDS Person Death](xplore_pds_person_death.html)
+- [PDS Person Death](explore_pds_person_death.html)
 
 These communications will be published by the [Events Management Service](https://developer.nhs.uk/library/interoperability/events-management-service) (EMS).
 
