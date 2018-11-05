@@ -46,6 +46,7 @@ The EMS Event Message Bundle Structure page has been update to include clarifica
 
 **PDS Birth Notification**
 - Delivery Place Type - change from Mandatory to Required
+- The patient focus for the event message has been changed to use [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1) to represent the mother, to support birth notification subscriptions. Additionally, the [EMS-PDS-RelatedPerson-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-PDS-RelatedPerson-1) profile is in use to represent the relationship with the baby patient resource.
 
 
 **Error Handling**
