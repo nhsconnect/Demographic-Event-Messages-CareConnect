@@ -14,39 +14,71 @@ The PDS Change of Address Bundle is expected to include a combination of the fol
 | PDS Change of Address Event Message Bundle |
 |--------------------------------------------|
 | [EMS-Bundle-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Bundle-1)                              |
-| [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1)  where the coding and display elements for the 'event' type are fixed to 'PDS002 - PDS Change of Address'                      |
+| [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) |
 | [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1)                |
 | [EMS-HealthcareService-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-HealthcareService-1)                   |
 | [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1)                     |
 | [EMS-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Communication-1)                       |
 
-## Data item requirements  ##
+<img src="images/explore/change_of_address_bundle.png" >
 
-The data item requirements are expected to be fulfilled as below:
+The `CareConnect-EMS-Patient-1` resource within the bundle will contain two addresses, one will represent the patients old address and one will represent the patients new address and will be identifiable by the `use` element within the addresses.
 
-| PDS Change of Address data item name | FHIR Resource             | FHIR element         | Mandatory/Optional/Required | Note         |
-|--------------------------------------|---------------------------|----------------------|-----------------------------|--------------|
-| Current Address Type                 | CareConnect-EMS-Patient-1 | address.use          | Required                    | value = home |
-| Address Line 1 or 2                  | CareConnect-EMS-Patient-1 | address.line         | Required                    |              |
-| Address Line 3                       | CareConnect-EMS-Patient-1 | address.line         | Optional                    |              |
-| Address Line 4                       | CareConnect-EMS-Patient-1 | address.line         | Required                    |              |
-| Address Line 5                       | CareConnect-EMS-Patient-1 | address.line         | Optional                    |              |
-| Postcode                             | CareConnect-EMS-Patient-1 | address.postalcode   | Required                    |              |
-| PAF Key                              | to be confirmed           | to be confirmed      | Optional                    |              |
-| Address Description                  | to be confirmed           | to be confirmed      | Required                    |              |
-| Address Effective From Date          | CareConnect-EMS-Patient-1 | address.period.start | Required                    |              |
-| Address Effective To Date            | CareConnect-EMS-Patient-1 | address.period.end   | Optional                    |              |
-| Previous Address Type                | CareConnect-EMS-Patient-1 | address.use          | Required                    | value = old  |
-| Previous Address                     | CareConnect-EMS-Patient-1 | address.line         | Required                    |              |
-| Previous Postcode                    | CareConnect-EMS-Patient-1 | address.postalCode   | Required                    |              |
-| Previous Address Description         | to be confirmed           | to be confirmed      | Required                    |              |
-| Previous Address Effective From Date | CareConnect-EMS-Patient-1 | address.period.start | Required                    |              |
-| Previous Address Effective To Date   | CareConnect-EMS-Patient-1 | address.period.end   | Optional                    |              |
+
+## PDS Change of Address Message Life Cycle ##
+
+The `PDS Change of Address` event message is always a `new` event and there is no concept of `update` or `delete` for the event message.
+
+If a subscriber receive multiple `PDS Change of Address` event messages for the same patient, the latest event message as indicated by the last updated meta data element within the patient resource should be considered the source of truth for the patients correct address.
+
+{% include important.html content="`PDS Change of Address` event messages will only be triggered for updates to the patients home address on the Spine. Changes to a patient temporary address's on Spine will not trigger a `PDS Change of Address` event message to be sent through NEMS." %}
 
 
 
+## Resource population requirements and guidance ##
+
+The following requirements and resource population guidance should be followed in addition to the requirements and guidance outlined in the [Events Management Service](https://developer.nhs.uk/apis/ems-beta/explore_event_header_information.html) specification.
 
 
+### EMS-MessageHeader-1
+
+The messageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
+
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| extension(eventMessageType) | 1..1 | Fixed value: `new` |
+| event | 1..1 | Fixed Value: PDS002 (PDS Change of Address) |
+| focus | 1..1 | This will reference the "EMS-Communication-1" resource which contains information relating to the event message. |
 
 
+### EMS-Communication-1
+
+The Communication resource included in the event message SHALL conform to the [EMS-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Communication-1) constrained FHIR profile and the additional population guidance as per the table below:
+
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| status | 1..1 | Fixed value: `completed` |
+| payload | 1..1 | This will reference the patient resource representing the patient who is the focus of this event. |
+
+
+### CareConnect-EMS-Patient-1
+
+The patient resource included in the event message SHALL conform to the [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
+
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| identifier | 1..1 | Patient NHS Number SHALL be included within the nhsNumber identifier slice |
+| **Current Address** |
+| address.use | 1..1 | Fixed value: home |
+| address.line | 1..* | Current address lines |
+| address.postalcode | 1..1 | Current address post code |
+| address.text | 1..1 | Text representation of the patients current address in full |
+| address.period.start | 1..1 | The date from which the patients current address was valid |
+| **Previous Address** |
+| address.use | 1..1 | Fixed value: old |
+| address.line | 1..* | Previous address lines |
+| address.postalcode | 1..1 | Previous address post code |
+| address.text | 1..1 | Text representation of the patients previous address in full |
+| address.period.start | 1..1 | The date from which the patients previous address was valid |
+| address.period.end | 1..1 | The date from which the patients previous address was no longer their current address |
 
