@@ -31,7 +31,7 @@ The `PDS Change of Address` event message is always a `new` event and there is n
 
 If a subscriber receive multiple `PDS Change of Address` event messages for the same patient, the latest event message as indicated by the last updated meta data element within the patient resource should be considered the source of truth for the patients correct address.
 
-{% include important.html content="`PDS Change of Address` event messages will only be triggered for updates to the patients home address on the Spine. Changes to a patient temporary address's on Spine will not trigger a `PDS Change of Address` event message to be sent through NEMS." %}
+{% include important.html content="`PDS Change of Address` event messages will only be triggered for updates to the patients home address on the Spine. Changes to a patient temporary address's on Spine will not trigger a `PDS Change of Address` event message to be sent through the EMS." %}
 
 
 
@@ -69,16 +69,20 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | --- | --- | --- |
 | identifier | 1..1 | Patient NHS Number SHALL be included within the nhsNumber identifier slice |
 | **Current Address** |
-| address.use | 1..1 | Fixed value: home |
-| address.line | 1..* | Current address lines |
+| address.use | 1..1 | Fixed value: **home** |
+| address.line | 1..* | Current address lines. Note: the address lines SHALL appear in the the resource in order, i.e. Address line 1 first, line 2 second, etc. |
+| address.city | 0..1 | If included the city part of the current address. |
+| address.district | 0..1 | If included the county element of the current address. |
 | address.postalcode | 1..1 | Current address post code |
 | address.text | 1..1 | Text representation of the patients current address in full |
 | address.period.start | 1..1 | The date from which the patients current address was valid |
 | **Previous Address** |
-| address.use | 1..1 | Fixed value: old |
-| address.line | 1..* | Previous address lines |
+| address.use | 1..1 | Fixed value: **old** |
+| address.line | 1..* | Previous address lines. Note: the address lines SHALL appear in the the resource in order, i.e. Address line 1 first, line 2 second, etc. |
+| address.city | 0..1 | If included the city part of the previous address. |
+| address.district | 0..1 | If included the county element of the previous address. |
 | address.postalcode | 1..1 | Previous address post code |
 | address.text | 1..1 | Text representation of the patients previous address in full |
 | address.period.start | 1..1 | The date from which the patients previous address was valid |
-| address.period.end | 1..1 | The date from which the patients previous address was no longer their current address |
+| address.period.end | 0..1 | The date from which the patients previous address was no longer their current address |
 
