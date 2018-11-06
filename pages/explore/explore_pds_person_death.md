@@ -18,6 +18,10 @@ The PDS Person Death event message bundle is expected to include a combination o
 | [EMS-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Communication-1)                       |
 | [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1)                     |
 
+<img src="images/explore/pds_death_bundle.png" >
+
+The `extension(deathNotificationStatus)` and `deceased` elements within the patient resource are the main indicators of the patients death status.
+
 
 ## PDS Death Event Message Life Cycle ##
 
@@ -67,8 +71,8 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
-| extension(deathNotificationStatus) | This will be populated as per the event life cycle table above. |
-| deceased | This will be populated as per the event life cycle table above. |
+| extension(deathNotificationStatus) | 0..1 | This will be populated as per the event life cycle table above. |
+| deceased | 0..1 | This will be populated as per the event life cycle table above. |
 
 
 ### CareConnect-Organization-1
