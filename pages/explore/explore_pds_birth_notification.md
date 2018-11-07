@@ -158,6 +158,15 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | identifier | 1..1 | Organisation identifier using the ODS identifier slice |
 
 
+### CareConnect-Practitioner-1
+
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| name.given | 1..* | Practitioner given name(s) |
+| name.family | 1..1 | Practitioner family name |
+
+
+
 
 ### Other resource data item requirements are expected to be fulfilled as below:
 
@@ -167,7 +176,4 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | Business Effective To Date | CareConnect-EMS-Patient-1.registrationDetails | registrationPeriod.period.end | Required | |
 | Partner Child Health Organisation Code | CareConnect-Organization-1 | identifier | Mandatory | |
 | Responsible Child Health Organisation Code | CareConnect-Organization-1 | identifier | Mandatory | |
-| Notifying Person Family Name | CareConnect-Practitioner-1 | name.family | Mandatory | |
-| First Given Name | CareConnect-Practitioner-1 | name.given | Mandatory | |
-| Second Name Given | CareConnect-Practitioner-1 | name.given | Required | |
 
