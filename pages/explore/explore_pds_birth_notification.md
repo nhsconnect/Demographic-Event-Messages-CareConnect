@@ -36,7 +36,7 @@ The focus of the PDS Birth Notification event message is the `CareConnect-EMS-Pa
 
 ## PDS Birth Notification Event Message Life Cycle ##
 
-The `PDS Birth Notification` event message is always a `new` event and there is no concept of `update` or `delete` for the event message.
+The `PDS Birth Notification` event message is only ever sent once by the Spine and will be a `new` event. There is no concept of `update` or `delete` for the event message.
 
 The birth notification event will be triggered by a birth being registerd on the Spine.
 
@@ -64,10 +64,10 @@ The Communication resource included in the event message SHALL conform to the [E
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | status | 1..1 | Fixed value: `completed` |
-| payload | 1..1 | This will reference the patient resource representing the patient who is the focus of this event. |
+| payload | 1..1 | This will reference the patient resource representing the mother who is the focus of this event. |
 
 
-### CareConnect-EMS-Patient-1
+### CareConnect-EMS-Patient-1 (Mother)
 
 The patient resource included in the event message SHALL conform to the [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
 
@@ -80,7 +80,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 
 
-### CareConnect-EMS-PDS-Baby-Patient-1
+### CareConnect-EMS-PDS-Baby-Patient-1 (Baby)
 
 The patient resource included in the event message SHALL conform to the [CareConnect-EMS-PDS-Baby-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-PDS-Baby-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
 
@@ -100,13 +100,20 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | extension(ethnicCategory) | 1..1 | The ethnicity of the baby |
 
 
+### CareConnect-EMS-PDS-NumberOfBirths-Observation-1
+
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| valueQuantity | 1..1 | Number of Births in Confinement |
+| subject | 1..1 | The number of births observation will reference the **mother** patient resource. |
+
 
 ### CareConnect-EMS-PDS-BirthWeight-Observation-1
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | valueQuantity | 1..1 | The birth weight of the baby |
-| subject | 1..1 | The birth weight observation will reference the baby patient resource it relates. |
+| subject | 1..1 | The birth weight observation will reference the **baby** patient resource it relates. |
 
 
 ### CareConnect-EMS-PDS-GestationAge-Observation-1
@@ -114,15 +121,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | valueQuantity | 1..1 | Gestation Age of the baby |
-| subject | 1..1 | The gestation age observation will reference the baby patient resource it relates. |
-
-
-### CareConnect-EMS-PDS-NumberOfBirths-Observation-1
-
-| Element | Cardinality | Additional Guidance |
-| --- | --- | --- |
-| valueQuantity | 1..1 | Number of Births in Confinement |
-| subject | 1..1 | The number of births observation will reference the mother patient resource. |
+| subject | 1..1 | The gestation age observation will reference the **baby** patient resource it relates. |
 
 
 ### CareConnect-EMS-PDS-StillbornIndicator-Observation-1
@@ -130,7 +129,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | valueQuantity | 1..1 | Will indicate if the baby was still born or not. |
-| subject | 1..1 | The stillborn indicatior observation will reference the baby patient resource it relates. |
+| subject | 1..1 | The stillborn indicatior observation will reference the **baby** patient resource it relates. |
 
 
 ### CareConnect-EMS-PDS-SuspectedCongenitalAbnormalityIndicator-Observation-1
@@ -138,7 +137,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | valueQuantity | 1..1 | Suspected Congenital Abnormality Indicator, 'code' element uses SNOMED CT code '1097291000000101 - Suspected congenital abnormality (situation)' |
-| subject | 1..1 | This observation will reference the baby patient resource it relates. |
+| subject | 1..1 | This observation will reference the **baby** patient resource it relates. |
 
 
 ### CareConnect-EMS-PDS-DeliveryPlace-Organization-1
@@ -166,14 +165,12 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | name.family | 1..1 | Practitioner family name |
 
 
-
-
 ### Other resource data item requirements are expected to be fulfilled as below:
 
 | PDS Birth Notification data item name | FHIR Resource | FHIR element | Mandatory/Optional/Required | Note |
 |---|---|---|---|---|
-| Business Effective From Date | CareConnect-EMS-Patient-1.registrationDetails | registrationPeriod.period.start | Required | |
-| Business Effective To Date | CareConnect-EMS-Patient-1.registrationDetails | registrationPeriod.period.end | Required | |
-| Partner Child Health Organisation Code | CareConnect-Organization-1 | identifier | Mandatory | |
-| Responsible Child Health Organisation Code | CareConnect-Organization-1 | identifier | Mandatory | |
+| Business Effective From Date | CareConnect-EMS-Patient-1.registrationDetails | registrationPeriod.period.start | Required | **Extension was removed from Care Connect profile on which the EMS-Patient-1 profile is based** |
+| Business Effective To Date | CareConnect-EMS-Patient-1.registrationDetails | registrationPeriod.period.end | Required | **Extension was removed from Care Connect profile on which the EMS-Patient-1 profile is based**  |
+| Partner Child Health Organisation Code | CareConnect-Organization-1 | identifier | Mandatory | **Where does this sit in the profile and how does a consumer differenciate it from the other organizaitons in the bundle.** |
+| Responsible Child Health Organisation Code | CareConnect-Organization-1 | identifier | Mandatory | **Where does this sit in the profile and how does a consumer differenciate it from the other organizaitons in the bundle.** |
 
