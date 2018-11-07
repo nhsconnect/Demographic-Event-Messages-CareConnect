@@ -14,35 +14,36 @@ The PDS Person Death event message bundle is expected to include a combination o
 | PDS Person Death Event Message Bundle |
 |---------------------------------------|
 | [EMS-Bundle-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Bundle-1)                              |
-| [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) - where the coding and display elements for the 'event' type are fixed to 'PDS004 - PDS Person Death'                       |
+| [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) |
 | [EMS-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Communication-1)                       |
+| [EMS-HealthcareService-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-HealthcareService-1)                   |
 | [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1)                     |
 
-<img src="images/explore/pds_death_bundle.png" >
+<img src="images/explore/pds_death_bundle.png" style="max-width=800px;">
 
 The `extension(deathNotificationStatus)` and `deceased` elements within the patient resource are the main indicators of the patients death status.
 
 
-## PDS Death Event Message Life Cycle ##
+## PDS Death Event Message Types ##
 
-<img src="images/explore/pds_death_life_cycle.png" style="margin-left:auto; margin-right:auto;" >
+Death notification messages are sent by the Spine PDS whenever a patients death status is updated, therefore a subscriber to the death notification event message may receive more than one death notificaiton event message. For example, if the patient is incorectly marked as deseased the subscribers will get an informal or formal death notificaiton event message but then when the patients death staus is corrected on the Spine the subscribers to the death notification event for that patient will receive the death notification event message for "Death Notification Status removed".
 
-|  | PDS Person Death (Informal) | PDS Person Death (Formal) | PDS Person Death (Entered in error) |
+|  | PDS Person Death (Informal) | PDS Person Death (Formal) | PDS Person Death (Death Notification Status removed) |
 | --- | --- | --- | --- |
-| | A death notification reported by a secondary source, no formal death certificate recieved. | A formal death where death certificate has been recieved. | A revoke of a patient death event as the death was entered in error, the patient is NOT DEAD. |
+| | A death notification reported by a secondary source, no formal death certificate received. | A formal death where death certificate has been received. | A revoke of a patient death event as the death was entered in error, the patient is NOT DEAD. |
 | **EMS-MessageHeader-1 Resource** |
 | `extension(eventMessageType)` | Fixed value: `new` | Fixed value: `new` | Fixed value: `new` |
 | `event` | Fixed value: `PDS004 (PDS Person Death)` | Fixed value: `PDS004 (PDS Person Death)` | Fixed value: `PDS004 (PDS Person Death)` |
 | **EMS-Communication-1 Resource** |
 | `status` | Fixed value: `completed` | Fixed value: `completed` | Fixed value: `completed` |
 | **CareConnect-EMS-Patient-1** |
-| `extension (deathNotificationStatus)` | Fixed value: 1 (Informal) | Fixed value: 2 (Formal) | **extension not included in resource** |
+| `extension(deathNotificationStatus)` | Fixed value: 1 (Informal) | Fixed value: 2 (Formal) | Fixed value: U (Removed) |
 | `deceased` | element populated with dateTime of death | element populated with dateTime of death | **element not included in resource** |
 
 
 ## Resource population requirements and guidance ##
 
-The following requirements and resource population guidance should be followed in addition to the requiremnts and guidance outlined in the [Events Management Service](https://developer.nhs.uk/apis/ems-beta/explore_event_header_information.html) specification.
+The following requirements and resource population guidance should be followed in addition to the requirements and guidance outlined in the [Events Management Service](https://developer.nhs.uk/apis/ems-beta/explore_event_header_information.html) specification.
 
 ### EMS-MessageHeader-1
 
@@ -71,7 +72,8 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
-| extension(deathNotificationStatus) | 0..1 | This will be populated as per the event life cycle table above. |
+| extension(deathNotificationStatus) | 1..1 | This will be populated as per the event life cycle table above. |
+| extension(systemEffectiveDate) | 1..1 | Element populated with dateTime when Death Notification Status was updated on the Spine. |
 | deceased | 0..1 | This will be populated as per the event life cycle table above. |
 
 
