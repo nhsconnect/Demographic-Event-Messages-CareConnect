@@ -33,8 +33,7 @@ The `EMS-PDS-GPRegistration-EpisodeOfCare-1` resource `managingOrganization` ele
 
 The `PDS Change of GP` event message is always a `new` event and there is no concept of `update` or `delete` for the event message.
 
-If a subscriber receive multiple `PDS Change of GP` event messages for the same patient, the latest event message as indicated by the last updated meta data within the patient resource should be considered the source of truth for the patients GP details.
-
+If a subscriber receive multiple `PDS Change of GP` event messages for the same patient, the latest event message as indicated by the `timestamp` element within the MessageHeader resource should be considered the source of truth for the patients GP details.
 
 ## Resource population requirements and guidance ##
 
