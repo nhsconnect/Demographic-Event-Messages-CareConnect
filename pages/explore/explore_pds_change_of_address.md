@@ -29,7 +29,7 @@ The `CareConnect-EMS-Patient-1` resource within the bundle will contain two addr
 
 The `PDS Change of Address` event message is always a `new` event and there is no concept of `update` or `delete` for the event message.
 
-If a subscriber receive multiple `PDS Change of Address` event messages for the same patient, the latest event message as indicated by the last updated meta data element within the patient resource should be considered the source of truth for the patients correct address.
+If a subscriber receive multiple `PDS Change of Address` event messages for the same patient, the latest event message as indicated by the `timestamp` element within the MessageHeader resource should be considered the source of truth for the patients correct address.
 
 {% include important.html content="`PDS Change of Address` event messages will only be triggered for updates to the patients home address on the Spine. Changes to a patient temporary address's on Spine will not trigger a `PDS Change of Address` event message to be sent through the EMS." %}
 
