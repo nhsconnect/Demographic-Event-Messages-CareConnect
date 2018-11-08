@@ -77,7 +77,8 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | name (official) | 1..1 | Patients name as registered on PDS, included within the resource as the `official` name element slice |
 | birthDate | 0..1 | The patient birth date shall be included in the patient resource |
 | generalPractitioner | 0..1 | References to an organization representing the Mother's Primary Care provider, the reference organization should contain the organization ODS Code, name and relevant contact details. |
-
+| extension(registrationDetails).period.start | 0..1 | Date when the mother was registered with the organization. |
+| extension(registrationDetails).period.end | 0..1 | Date when the mothers registration is scheduled to end if applicable. |
 
 
 ### CareConnect-EMS-PDS-Baby-Patient-1 (Baby)
@@ -159,18 +160,24 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 ### CareConnect-Practitioner-1
 
+The notifying person for this event message.
+
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | name.given | 1..* | Practitioner given name(s) |
 | name.family | 1..1 | Practitioner family name |
 
 
-### Other resource data item requirements are expected to be fulfilled as below:
+### CareConnect-Organization-1
 
-| PDS Birth Notification data item name | FHIR Resource | FHIR element | Mandatory/Optional/Required | Note |
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| identifier | 1..1 | Organization identifier using the ODS identifier slice |
+
+The Birth Notification event will contain organization resources containing additional information as per the table below. The organization resources will appear in the event message bundle in the same order as they appear in the table.
+
+| Organization resource content | Cardinality |
 |---|---|---|---|---|
-| Business Effective From Date | CareConnect-EMS-Patient-1.registrationDetails | registrationPeriod.period.start | Required | **Extension was removed from Care Connect profile on which the EMS-Patient-1 profile is based** |
-| Business Effective To Date | CareConnect-EMS-Patient-1.registrationDetails | registrationPeriod.period.end | Required | **Extension was removed from Care Connect profile on which the EMS-Patient-1 profile is based**  |
-| Partner Child Health Organisation Code | CareConnect-Organization-1 | identifier | Mandatory | **Where does this sit in the profile and how does a consumer differenciate it from the other organizaitons in the bundle.** |
-| Responsible Child Health Organisation Code | CareConnect-Organization-1 | identifier | Mandatory | **Where does this sit in the profile and how does a consumer differenciate it from the other organizaitons in the bundle.** |
+| Partner Child Health Organisation Code | 1..1 |
+| Responsible Child Health Organisation Code | 1..1 |
 
