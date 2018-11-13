@@ -40,7 +40,7 @@ If a subscriber receive multiple `PDS Person Death` event messages for the same 
 | `status` | Fixed value: `completed` | Fixed value: `completed` | Fixed value: `completed` |
 | **CareConnect-EMS-Patient-1** |
 | `extension(deathNotificationStatus)` | Fixed value: 1 (Informal) | Fixed value: 2 (Formal) | Fixed value: U (Removed) |
-| `deceased` | element populated with dateTime of death | element populated with dateTime of death | **element not included in resource** |
+| `deceasedDateTime` | element populated with dateTime of death | element populated with dateTime of death | **element not included in resource** |
 
 
 ## Resource population requirements and guidance ##
@@ -86,7 +86,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | --- | --- | --- |
 | extension(deathNotificationStatus) | 1..1 | This will be populated as per the event life cycle table above. |
 | extension(systemEffectiveDate) | 1..1 | Element populated with dateTime when Death Notification Status was updated on the Spine. |
-| deceased (dateTime) | 0..1 | This will be populated as per the event life cycle table above. The `deceased` element SHALL be populated as a `dateTime`, representing the date of death. <br/>The `deceased` element SHALL NOT be populated as a `boolean` value. |
+| deceasedDateTime | 0..1 | This will be populated as per the event life cycle table above. |
 
 
 ### CareConnect-Organization-1
