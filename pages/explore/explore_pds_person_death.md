@@ -26,9 +26,9 @@ The `extension(deathNotificationStatus)` and `deceased` elements within the pati
 
 ## PDS Death Event Message Types ##
 
-Death notification messages are sent by the Spine PDS whenever a patients death status is updated, therefore a subscriber to the death notification event message may receive more than one death notificaiton event message. For example, if the patient is incorectly marked as deseased the subscribers will get an informal or formal death notificaiton event message but then when the patients death staus is corrected on the Spine the subscribers to the death notification event for that patient will receive the death notification event message for "Death Notification Status removed".
+The PDS Person Death event message will be sent by the NEMS, following an update to the patient death information on PDS. This information includes the death notification status which may be updated should the patient’s death notification status change. The event message behaviour following each update to the patient’s death notification status is demonstrated in the table below: 
 
-If a subscriber receive multiple `PDS Person Death` event messages for the same patient, the latest event message as indicated by the `timestamp` element within the MessageHeader resource should be considered the source of truth for the deathNotificationStatus.
+If a subscriber receive multiple `PDS Person Death` event messages for the same patient, the latest event message as indicated by the `systemEffectiveDate` extension within the Patient resource should be considered the source of truth for the deathNotificationStatus. This is the specific dateTime on which the deathNotificationStatus was updated on PDS.
 
 |  | PDS Person Death (Informal) | PDS Person Death (Formal) | PDS Person Death (Death Notification Status removed) |
 | --- | --- | --- | --- |
@@ -68,6 +68,16 @@ The Communication resource included in the event message SHALL conform to the [E
 | payload | 1..1 | This will reference the patient resource representing the patient who is the focus of this event. |
 
 
+### EMS-HealthcareService-1
+
+The HealthcareService resource included in the event message SHALL conform to the [EMS-HealthcareService-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-HealthcareService-1) constrained FHIR profile and the additional population guidance as per the table below:
+
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| providedBy | 1..1 | This will reference the source organization of the event message. For PDS events this will be a reference to an organization resource which can be retrieved using the [ODS Lookup API](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) |
+| type | 1..1 | This will represent the type of service responsible for the event message. This will have a fixed value: PDS (Personal Demographics Service) |
+
+
 ### CareConnect-EMS-Patient-1
 
 The patient resource included in the event message SHALL conform to the [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
@@ -76,7 +86,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | --- | --- | --- |
 | extension(deathNotificationStatus) | 1..1 | This will be populated as per the event life cycle table above. |
 | extension(systemEffectiveDate) | 1..1 | Element populated with dateTime when Death Notification Status was updated on the Spine. |
-| deceased | 0..1 | This will be populated as per the event life cycle table above. |
+| deceased (dateTime) | 0..1 | This will be populated as per the event life cycle table above. The `deceased` element SHALL be populated as a `dateTime`, representing the date of death. <br/>The `deceased` element SHALL NOT be populated as a `boolean` value. |
 
 
 ### CareConnect-Organization-1
