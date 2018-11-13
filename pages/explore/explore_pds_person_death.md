@@ -21,7 +21,7 @@ The PDS Person Death event message bundle is expected to include a combination o
 
 <img src="images/explore/pds_death_bundle.png">
 
-The `extension(deathNotificationStatus)` and `deceased` elements within the patient resource are the main indicators of the patients death status.
+The `extension(deathNotificationStatus)` and `deceasedDateTime` elements within the patient resource are the main indicators of the patients death status.
 
 
 ## PDS Death Event Message Types ##
