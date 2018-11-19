@@ -29,7 +29,10 @@ The PDS Birth Notification event message bundle is expected to include a combina
 | [CareConnect-EMS-PDS-RegisteringAuthority-Organization-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-PDS-RegisteringAuthority-Organization-1)                   |
 | [CareConnect-Practitioner-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1)                                            |
 
-<img src="images/explore/pds_birth_notification_bundle.png" >
+<div style="text-align:center; margin-bottom:20px" >
+	<a href="images/explore/pds_birth_notification_bundle.png" target="_blank"><img src="images/explore/pds_birth_notification_bundle.png"></a>
+	PDS Birth Notification Bundle <a href="images/explore/pds_birth_notification_bundle.png" target="_blank">(open in new TAB)</a>
+</div>
 
 The focus of the PDS Birth Notification event message is the `CareConnect-EMS-Patient-1` resource representing the mother, referenced from the event message Communication resource. The baby in this birth notification is linked to the mother through the `EMS-PDS-RelatedPerson-1` resource which shows the relationship of mother to baby. Additional information about the birth is included in the bundle as observation resources which are either linked to the mother or the baby
 
