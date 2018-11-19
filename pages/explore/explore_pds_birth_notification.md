@@ -76,6 +76,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
+| meta.versionId | 1..1 | This element will contain the serial change number (SCN) of the mothers patient record within Spine at the time this event was published. |
 | identifier | 1..1 | Patient NHS Number SHALL be included within the nhsNumber identifier slice |
 | name (official) | 1..1 | Patients name as registered on PDS, included within the resource as the `official` name element slice |
 | birthDate | 0..1 | The patient birth date shall be included in the patient resource |
@@ -90,6 +91,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
+| meta.versionId | 1..1 | This element will contain the serial change number (SCN) of the babies patient record within Spine at the time this event was published. |
 | identifier | 1..1 | Patient NHS Number SHALL be included within the nhsNumber identifier slice |
 | name (official) | 1..1 | The babys name as registered on PDS, included within the patient resource as the `official` name element slice |
 | gender | 1..1 | The gender of the baby |
