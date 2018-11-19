@@ -22,7 +22,10 @@ The PDS Change of GP event message bundle is expected to include a combination o
 | [EMS-PDS-GPRegistration-EpisodeOfCare-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-PDS-GPRegistration-EpisodeOfCare-1) |
 
 
-<img src="images/explore/change_of_gp_bundle.png" >
+<div style="text-align:center; margin-bottom:20px" >
+	<a href="images/explore/change_of_gp_bundle.png" target="_blank"><img src="images/explore/change_of_gp_bundle.png"></a>
+	PDS Change of GP Bundle <a href="images/explore/change_of_gp_bundle.png" target="_blank">(open in new TAB)</a>
+</div>
 
 The `CareConnect-EMS-Patient-1` resource `generalPractitioner` element references the organization resource representing the patients current GP practice.
 

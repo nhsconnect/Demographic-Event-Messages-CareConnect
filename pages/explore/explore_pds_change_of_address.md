@@ -20,7 +20,10 @@ The PDS Change of Address Bundle is expected to include a combination of the fol
 | [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1)                     |
 | [EMS-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Communication-1)                       |
 
-<img src="images/explore/change_of_address_bundle.png" >
+<div style="text-align:center; margin-bottom:20px" >
+	<a href="images/explore/change_of_address_bundle.png" target="_blank"><img src="images/explore/change_of_address_bundle.png"></a>
+	PDS Change of Address Bundle <a href="images/explore/change_of_address_bundle.png" target="_blank">(open in new TAB)</a>
+</div>
 
 The `CareConnect-EMS-Patient-1` resource within the bundle will contain two addresses, one will represent the patients old address and one will represent the patients new address and will be identifiable by the `use` element within the addresses.
 
