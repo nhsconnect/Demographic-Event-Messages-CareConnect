@@ -87,6 +87,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
+| meta.versionId | 1..1 | This element will contain the serial change number (SCN) of the patient record within Spine at the time this event was published. |
 | extension(deathNotificationStatus) | 1..1 | This will be populated as per the event life cycle table above. |
 | extension(systemEffectiveDate) | 1..1 | Element populated with dateTime when Death Notification Status was updated on the Spine. |
 | deceasedDateTime | 0..1 | This will be populated as per the event life cycle table above. |
