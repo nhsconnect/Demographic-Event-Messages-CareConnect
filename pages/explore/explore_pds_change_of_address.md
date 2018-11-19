@@ -70,6 +70,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
+| meta.versionId | 1..1 | This element will contain the serial change number (SCN) of the patient record within Spine at the time this event was published. |
 | identifier | 1..1 | Patient NHS Number SHALL be included within the nhsNumber identifier slice |
 | **Current Address** |
 | address.use | 1..1 | Fixed value: **home** |
