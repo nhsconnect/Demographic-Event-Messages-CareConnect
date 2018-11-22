@@ -31,11 +31,11 @@ The `extension(deathNotificationStatus)` and `deceasedDateTime` elements within 
 
 The PDS Person Death event message will be sent by the NEMS, following an update to the patient death information on PDS. This information includes the death notification status which may be updated should the patient’s death notification status change. The event message behaviour following each update to the patient’s death notification status is demonstrated in the table below: 
 
-If a subscriber receive multiple `PDS Person Death` event messages for the same patient, the latest event message as indicated by the `systemEffectiveDate` extension within the Patient resource should be considered the source of truth for the deathNotificationStatus. This is the specific dateTime on which the deathNotificationStatus was updated on PDS.
+If a subscriber receives multiple `PDS Person Death` event messages for the same patient, the latest event message as indicated by the `systemEffectiveDate` extension within the Patient resource should be considered the source of truth for the deathNotificationStatus. This is the specific dateTime on which the deathNotificationStatus was updated on PDS.
 
 |  | PDS Person Death (Informal) | PDS Person Death (Formal) | PDS Person Death (Death Notification Status removed) |
 | --- | --- | --- | --- |
-| | A death notification reported by a secondary source, no formal death certificate received. | A formal death where death certificate has been received. | A revoke of a patient death event as the death was entered in error, the patient is NOT DEAD. |
+| | Death notice received via an update from a local NHS Organisation such as GP or Trust | Death notice received from Registrar of Deaths | A revoke of a patient death event as the death was entered in error, the patient is NOT DEAD. |
 | **EMS-MessageHeader-1 Resource** |
 | `extension(eventMessageType)` | Fixed value: `new` | Fixed value: `new` | Fixed value: `new` |
 | `event` | Fixed value: `PDS004 (PDS Person Death)` | Fixed value: `PDS004 (PDS Person Death)` | Fixed value: `PDS004 (PDS Person Death)` |
@@ -52,7 +52,7 @@ The following requirements and resource population guidance should be followed i
 
 ### EMS-MessageHeader-1
 
-The messageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
+The MessageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
