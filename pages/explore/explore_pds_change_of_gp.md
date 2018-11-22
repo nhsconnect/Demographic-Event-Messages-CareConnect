@@ -27,7 +27,7 @@ The PDS Change of GP event message bundle is expected to include a combination o
 	PDS Change of GP Bundle <a href="images/explore/change_of_gp_bundle.png" target="_blank">(open in new TAB)</a>
 </div>
 
-The `CareConnect-EMS-Patient-1` resource `generalPractitioner` element references the organization resource representing the patients current GP practice.
+The `CareConnect-EMS-Patient-1` resource `generalPractitioner` element references the organization resource representing the patient's current GP practice.
 
 The `EMS-PDS-GPRegistration-EpisodeOfCare-1` resource `managingOrganization` element references the organization resource which was the patients previous GP practice.
 
@@ -36,15 +36,15 @@ The `EMS-PDS-GPRegistration-EpisodeOfCare-1` resource `managingOrganization` ele
 
 The `PDS Change of GP` event message is always a `new` event and there is no concept of `update` or `delete` for the event message.
 
-If a subscriber receive multiple `PDS Change of GP` event messages for the same patient, the latest event message as indicated by the `timestamp` element within the MessageHeader resource should be considered the source of truth for the patients GP details.
+If a subscriber receives multiple `PDS Change of GP` event messages for the same patient, the latest event message as indicated by the `timestamp` element within the MessageHeader resource should be considered the source of truth for the patients GP details.
 
 ## Resource population requirements and guidance ##
 
-The following requirements and resource population guidance should be followed in addition to the requiremnts and guidance outlined in the [Events Management Service](https://developer.nhs.uk/apis/ems-beta/explore_event_header_information.html) specification.
+The following requirements and resource population guidance should be followed in addition to the requirements and guidance outlined in the [Events Management Service](https://developer.nhs.uk/apis/ems-beta/explore_event_header_information.html) specification.
 
 ### EMS-MessageHeader-1
 
-The messageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
+The MessageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
@@ -77,7 +77,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 ### CareConnect-Organization-1
 
-Within the bundle there will be multiple organization resources, including one for the patients current GP Practice and one for the patients previous GP Practice. Other Organization resource may be included where referenced from with resources. The Organization resources included in the bundle SHALL conform to the [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) constrained FHIR profile and the additional population guidance as per the table below:
+Within the bundle there will be multiple organization resources, including one for the patient's current GP Practice and one for the patient's previous GP Practice. Other Organization resources may be included where referenced from within other resources in the bundle. The Organization resources included in the bundle SHALL conform to the [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) constrained FHIR profile and the additional population guidance as per the table below:
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
