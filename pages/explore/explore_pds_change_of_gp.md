@@ -77,7 +77,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 ### CareConnect-Organization-1
 
-Within the bundle there will be multiple organization resources, including one for the patient's current GP Practice and one for the patient;s previous GP Practice. Other Organization resources may be included where referenced from within other resources in the bundle. The Organization resources included in the bundle SHALL conform to the [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) constrained FHIR profile and the additional population guidance as per the table below:
+Within the bundle there will be multiple organization resources, including one for the patient's current GP Practice and one for the patient's previous GP Practice. Other Organization resources may be included where referenced from within other resources in the bundle. The Organization resources included in the bundle SHALL conform to the [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) constrained FHIR profile and the additional population guidance as per the table below:
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
