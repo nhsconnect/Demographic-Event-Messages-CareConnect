@@ -25,14 +25,14 @@ The PDS Change of Address Bundle is expected to include a combination of the fol
 	PDS Change of Address Bundle <a href="images/explore/change_of_address_bundle.png" target="_blank">(open in new TAB)</a>
 </div>
 
-The `CareConnect-EMS-Patient-1` resource within the bundle will contain two addresses, one will represent the patients old address and one will represent the patients new address and will be identifiable by the `use` element within the addresses.
+The `CareConnect-EMS-Patient-1` resource within the bundle will contain two addresses, one will represent the patient's old address and one will represent the patients new address and will be identifiable by the `use` element within the addresses.
 
 
 ## PDS Change of Address Message Life Cycle ##
 
 The `PDS Change of Address` event message is always a `new` event and there is no concept of `update` or `delete` for the event message.
 
-If a subscriber receive multiple `PDS Change of Address` event messages for the same patient, the latest event message as indicated by the `timestamp` element within the MessageHeader resource should be considered the source of truth for the patients correct address.
+If a subscriber receives multiple `PDS Change of Address` event messages for the same patient, the latest event message as indicated by the `timestamp` element within the MessageHeader resource should be considered the source of truth for the patient's correct address.
 
 {% include important.html content="`PDS Change of Address` event messages will only be triggered for updates to the patients home address on the Spine. Changes to a patient temporary address's on Spine will not trigger a `PDS Change of Address` event message to be sent through the EMS." %}
 
@@ -45,7 +45,7 @@ The following requirements and resource population guidance should be followed i
 
 ### EMS-MessageHeader-1
 
-The messageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
+The MessageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
