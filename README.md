@@ -1,7 +1,14 @@
-# Events-Management
+# Demographics-Event-Messages #
 
-The National Events Management System (EMS) Specification supports the following communications using the generic EMS event header items:
+## Introduction ##
 
-**National Failsafe** - this event message is intended to support both population tracking and population screening. It will alert parents and professionals if the standard programme of care is not delivered or undertaken as expected.
+This Demographic Update Event Message Specification supports the following communications:
 
-**Patient Demographics Service (PDS) Updates** - these event messages will issue updates to demographic information held by the PDS.
+- PDS Birth Notification
+- PDS Change of Address
+- PDS Change of GP
+- PDS Person Death
+
+## References ##
+
+[Health Developer Network - Events Management Service](https://developer.nhs.uk/library/interoperability/events-management-service/)
