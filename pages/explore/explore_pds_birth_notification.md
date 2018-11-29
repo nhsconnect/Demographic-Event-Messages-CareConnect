@@ -41,7 +41,7 @@ The focus of the PDS Birth Notification event message is the `CareConnect-EMS-Pa
 
 The `PDS Birth Notification` event message is only ever sent once by the Spine and will be a `new` event. There is no concept of `update` or `delete` for the event message.
 
-The birth notification event will be triggered by a birth being registerd on the Spine.
+The birth notification event will be triggered by a birth being registered on the Spine.
 
 
 ## Resource population requirements and guidance ##
@@ -51,7 +51,7 @@ The following requirements and resource population guidance should be followed i
 
 ### EMS-MessageHeader-1
 
-The messageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
+The MessageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table below:
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ The Communication resource included in the event message SHALL conform to the [E
 
 ### CareConnect-EMS-Patient-1 (Mother)
 
-The patient resource included in the event message SHALL conform to the [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
+This Patient resource included in the event message SHALL conform to the [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
@@ -87,7 +87,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 
 ### CareConnect-EMS-PDS-Baby-Patient-1 (Baby)
 
-The patient resource included in the event message SHALL conform to the [CareConnect-EMS-PDS-Baby-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-PDS-Baby-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
+This Patient resource included in the event message SHALL conform to the [CareConnect-EMS-PDS-Baby-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-PDS-Baby-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
@@ -119,7 +119,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | valueQuantity | 1..1 | The birth weight of the baby |
-| subject | 1..1 | The birth weight observation will reference the **baby** patient resource it relates. |
+| subject | 1..1 | The birth weight observation will reference the **baby** patient resource. |
 
 
 ### CareConnect-EMS-PDS-GestationAge-Observation-1
@@ -127,7 +127,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | valueQuantity | 1..1 | Gestation Age of the baby |
-| subject | 1..1 | The gestation age observation will reference the **baby** patient resource it relates. |
+| subject | 1..1 | The gestation age observation will reference the **baby** patient resource. |
 
 
 ### CareConnect-EMS-PDS-StillbornIndicator-Observation-1
@@ -135,7 +135,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | valueQuantity | 1..1 | Will indicate if the baby was still born or not. |
-| subject | 1..1 | The stillborn indicatior observation will reference the **baby** patient resource it relates. |
+| subject | 1..1 | The stillborn indicator observation will reference the **baby** patient resource. |
 
 
 ### CareConnect-EMS-PDS-SuspectedCongenitalAbnormalityIndicator-Observation-1
@@ -143,7 +143,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | valueQuantity | 1..1 | Suspected Congenital Abnormality Indicator, 'code' element uses SNOMED CT code '1097291000000101 - Suspected congenital abnormality (situation)' |
-| subject | 1..1 | This observation will reference the **baby** patient resource it relates. |
+| subject | 1..1 | This observation will reference the **baby** patient resource. |
 
 
 ### CareConnect-EMS-PDS-DeliveryPlace-Organization-1
