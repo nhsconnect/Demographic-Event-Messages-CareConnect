@@ -94,8 +94,8 @@ The EpisodeOfCare resource included in the event message SHALL conform to the [E
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | status | 1..1 | Fixed value: finished |
-| extension(systemEffectivePeriod).valuePeriod.start | 1..1 | The PDS system date on which the old GP Practice registration was added to PDS. |
-| extension(systemEffectivePeriod).valuePeriod.end | 1..1 | The PDS system date on which the old GP Practice registration was ended on the PDS. |
-| period.start | 1..1 | Date on which the **old** GP practice assumed responsibility for the patient. |
-| period.end | 1..1 | Date on which the **old** GP Practice stopped being responsible for the patient, usually when the new GP Practice takes responsibility for the patient. |
+| extension(systemEffectivePeriod).valuePeriod.start | 0..1 | The PDS system date on which the old GP Practice registration was added to PDS. |
+| extension(systemEffectivePeriod).valuePeriod.end | 0..1 | The PDS system date on which the old GP Practice registration was ended on the PDS. |
+| period.start | 0..1 | Date on which the **old** GP practice assumed responsibility for the patient. |
+| period.end | 0..1 | Date on which the **old** GP Practice stopped being responsible for the patient, usually when the new GP Practice takes responsibility for the patient. |
 
