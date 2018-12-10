@@ -73,6 +73,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | identifier | 1..1 | Patient NHS Number SHALL be included within the nhsNumber identifier slice |
 | generalPractitioner | 1..1 | References to an organization representing the new GP Practice which is the current primary care provider for the patient. |
 
+The `generalPractitioner` element does not contain a date indicating when the patient was registered at their new GP practice. The `timestamp` within the MessageHeader resource may be considered the effective date for the new GP Practice as this is the date when the patients GP registration was changed to the new GP on the Spine.
 
 
 ### CareConnect-Organization-1
