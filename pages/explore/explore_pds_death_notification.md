@@ -1,17 +1,17 @@
 ---
-title: PDS Person Death   
+title: PDS Death Notification
 keywords:  messaging, bundles
 tags: [fhir,messaging]
 sidebar: foundations_sidebar
-permalink: explore_pds_person_death.html
-summary: "The FHIR profiles used for the PDS Person Death event message bundle"
+permalink: explore_pds_death_notification.html
+summary: "The FHIR profiles used for the PDS Death Notification event message bundle"
 ---
 
 ## FHIR Profiles ##
 
-The PDS Person Death event message bundle is expected to include a combination of the following resources to support the event header and data item requirements:
+The PDS Death Notification event message bundle is expected to include a combination of the following resources to support the event header and data item requirements:
 
-| PDS Person Death Event Message Bundle |
+| PDS Death Notification Event Message Bundle |
 |---------------------------------------|
 | [EMS-Bundle-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Bundle-1)                              |
 | [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) |
@@ -19,21 +19,25 @@ The PDS Person Death event message bundle is expected to include a combination o
 | [EMS-HealthcareService-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-HealthcareService-1)                   |
 | [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1)                     |
 
+## Bundle structure
+
 <div style="text-align:center; margin-bottom:20px" >
 	<a href="images/explore/pds_death_bundle.png" target="_blank"><img src="images/explore/pds_death_bundle.png"></a>
-	PDS Person Death Bundle <a href="images/explore/pds_death_bundle.png" target="_blank">(open in new TAB)</a>
+	PDS Death Notification Bundle <a href="images/explore/pds_death_bundle.png" target="_blank">(open in new TAB)</a>
 </div>
 
 The `extension(deathNotificationStatus)` and `deceasedDateTime` elements within the patient resource are the main indicators of the patients death status.
 
 
-## PDS Death Event Message Types ##
+## PDS Death Notification Event Message Types ##
 
-The PDS Person Death event message will be sent by the NEMS, following an update to the patient death information on PDS. This information includes the death notification status which may be updated should the patient’s death notification status change. The event message behaviour following each update to the patient’s death notification status is demonstrated in the table below: 
+The PDS Death Notification event message will be sent by the NEMS, following an update to the patient death information on PDS. This information includes the death notification status which may be updated should the patient’s death notification status change. The event message behaviour following each update to the patient’s death notification status is demonstrated in the table below:
 
-If a subscriber receives multiple `PDS Person Death` event messages for the same patient, the latest event message as indicated by the `systemEffectiveDate` extension within the Patient resource should be considered the source of truth for the deathNotificationStatus. This is the specific dateTime on which the deathNotificationStatus was updated on PDS.
+If a subscriber receives multiple `PDS Death Notification` event messages for the same patient, the latest event message as indicated by the `systemEffectiveDate` extension within the Patient resource should be considered the source of truth for the deathNotificationStatus. This is the specific dateTime on which the deathNotificationStatus was updated on PDS.
 
-|  | PDS Person Death (Informal) | PDS Person Death (Formal) | PDS Person Death (Death Notification Status removed) |
+The below table is included to highlight the different types of Death Notification event message you may receive and the key elements within resource which help identify the type of Death Notification event message you have received. Additional guidance around the content of the FHIR resources is outlined in the `Resource population requirements and guidance` section below.
+
+|  | PDS Death Notification (Informal) | PDS Death Notification (Formal) | PDS Death Notification (Death Notification Status removed) |
 | --- | --- | --- | --- |
 | | Death notice received via an update from a local NHS Organisation such as GP or Trust | Death notice received from Registrar of Deaths | A revoke of a patient death event as the death was entered in error, the patient is NOT DEAD. |
 | **EMS-MessageHeader-1 Resource** |

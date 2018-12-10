@@ -97,8 +97,8 @@ entries:
 #        - title: PDS Flags
 #          url: /explore_pds_flags.html
 #          output: web
-    - title: PDS Person Death
-      url: /explore_pds_person_death.html
+    - title: PDS Death Notification
+      url: /explore_pds_death_notification.html
       output: web
 
 
