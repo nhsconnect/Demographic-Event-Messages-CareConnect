@@ -9,6 +9,25 @@ summary: Summary release notes of the versions released in Demographic Update Ev
 
 This site is under active development by NHS Digital and is intended to provide guidance and FHIR components for the Demographic Update Event Messages. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis, and remains subject to clinical review. Changes to this specification following the initial beta release will be documented here.
 
+## 1.2.0-Beta ##
+
+[PDS Birth Notification](explore_pds_birth_notification.html)
+- Added introductory paragraph about trigger for event message from Spine
+- Added details related to MESH WorkflowID for this event message
+
+[PDS Change of Address](explore_pds_change_of_address.html)
+- Added introductory paragraph about trigger for event message from Spine
+- Added details related to MESH WorkflowID for this event message
+
+[PDS Change of GP](explore_pds_change_of_gp.html)
+- Added introductory paragraph about trigger for event message from Spine
+- Added details related to MESH WorkflowID for this event message
+
+[PDS Death Notification](explore_pds_death_notification.html)
+- Added introductory paragraph about trigger for event message from Spine
+- Added details related to MESH WorkflowID for this event message
+
+
 ## Beta 1.1.0 ##
 
 **About** - renamed to **Contact Us** - this page has been updated to share contact information. Guidance around FHIR profiles for event messages has been removed as it is not within the scope of this Implementation Guide. 
