@@ -198,5 +198,5 @@ The Birth Notification event will contain organization resources containing addi
 | Organization resource content | Cardinality |
 |---|---|---|---|---|
 | Partner Child Health Organisation Code | 1..1 |
-| Responsible Child Health Organisation Code | 1..1 |
+| Responsible Child Health Organisation Code | 0..1 |
 
