@@ -63,6 +63,7 @@ The MessageHeader resource included as part of the event message SHALL conform t
 | extension(eventMessageType) | 1..1 | Fixed value: `new` |
 | event | 1..1 | Fixed Value: PDS001 (PDS Change of GP) |
 | focus | 1..1 | This will reference the "EMS-Communication-1" resource which contains information relating to the event message. |
+| timestamp | 1..1 | This timestamp indicates when the message was sent. This date can be used to infer the start date of the new GP registration as the GP system will update the Spine when the patient is registered with the practice. |
 
 
 ### EMS-Communication-1
@@ -109,5 +110,5 @@ The EpisodeOfCare resource included in the event message SHALL conform to the [E
 | extension(systemEffectivePeriod).valuePeriod.start | 0..1 | The PDS system date on which the old GP Practice registration was added to PDS. |
 | extension(systemEffectivePeriod).valuePeriod.end | 0..1 | The PDS system date on which the old GP Practice registration was ended on the PDS. |
 | period.start | 0..1 | Date on which the **old** GP practice assumed responsibility for the patient. |
-| period.end | 0..1 | Date on which the **old** GP Practice stopped being responsible for the patient, usually when the new GP Practice takes responsibility for the patient. |
+| period.end | 0..1 | Date on which the **old** GP Practice stopped being responsible for the patient. |
 
