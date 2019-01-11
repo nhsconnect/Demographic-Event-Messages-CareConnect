@@ -1,7 +1,7 @@
 entries:
 - title: Demographics Update Event Messages  
   product: Demographics Update Event Messages  
-  version: 1.1.0-Beta
+  version: 1.2.0-Beta
   levels: one
   folders:
 
@@ -32,32 +32,6 @@ entries:
       url: /explore_msg_architecture_overview.html
       output: web
       type: homepage
-#    - title: Bundle Structure
-#      url: /explore_bundle_structure.html
-#      output: web
-#    - title: Event Header Information
-#      url: /explore_event_header_information.html
-#      output: web
-#    - title: Versioning
-#      url: /explore_event_versioning.html
-#      output: web
-#    - title: Error Handling
-#      url: /explore_errors.html
-#      output: web
-#    - title: FHIR Profiles
-#      url: /explore_fhir_profiles.html
-#      output: web
-#      subfolders:
-#      - title: Work Flow
-#        url: /workflow.html
-#        output: web
-#        subfolderitems:
-#        - title: Overview
-#          url: /explore_workflow_overview.html
-#          output: web
-#        - title: Encounter
-#          url: /workflow_encounter.html
-#          output: web
   - title: Messages
     output: web,pdf
     folderitems:
@@ -65,90 +39,18 @@ entries:
       url: /explore_example_messages.html
       output: web
       type: homepage
-#      subfolders:
-#      - title: Events Management Service
-#        output: web
-#        subfolderitems:
-#        - title: Event Message Response
-#          url: /explore_ems_event_response.html
-#          output: web
-#      - title: Personal Demographics Service (PDS) Updates
-#       url: /explore.html
-#        output: web
-#        subfolderitems:
     - title: PDS Birth Notification
       url: /explore_pds_birth_notification.html
       output: web
-#        - title: PDS Communication Preferences
-#          url: /explore_pds_communication_preferences.html
-#          output: web
-#        - title: PDS Related Person
-#          url: /explore_pds_related_person.html
-#          output: web
-#        - title: PDS Demographics
-#          url: /explore_pds_demographics.html
-#          output: web		  
     - title: PDS Change Of Address
       url: /explore_pds_change_of_address.html
       output: web
     - title: PDS Change of GP
       url: /explore_pds_change_of_gp.html
       output: web
-#        - title: PDS Flags
-#          url: /explore_pds_flags.html
-#          output: web
     - title: PDS Death Notification
       url: /explore_pds_death_notification.html
       output: web
-
-
-#  - title: Design & Build
-#    output: web
-#    folderitems:
-#    - title: Overview
-#      url: /test.html
-#      output: web
-#    - title: Patterns / Topology
-#      url: /test_patterns.html
-#      output: web
-#    - title: Access
-#      url: /test_access.html
-#      output: web
-#    - title: Security
-#      url: /test_security.html
-#      output: web
-#    - title: Test Data
-#      url: /test_data.html
-#      output: web
-
-#  - title: Assure
-#    output: web
-#    folderitems:
-#    - title: Overview
-#      url: /assure.html
-#      output: web
-#    - title: Access
-#      url: /assure_access.html
-#      output: web
-#    - title: Security
-#      url: /assure_security.html
-#      output: web
-#    - title: End To End
-#      url: /assure_end_to_end.html
-#      output: web
-
-#  - title: Deploy
-#    output: web
-#    folderitems:
-#    - title: Overview
-#      url: /deploy.html
-#      output: web
-#    - title: Access
-#      url: /deploy_access.html
-#      output: web
-#    - title: Security
-#      url: /deploy_security.html
-#      output: web
 
   - title: Help & Support
     output: web
@@ -163,13 +65,6 @@ entries:
       - title: Where Else Can I Look?
         output: web
         subfolderitems:
-#        - title: Community
-#          url: /support_community.html
-#          output: web
         - title: FHIR Tools
           url: /support_fhirtools.html
           output: web
-#        - title: Referenced Documentation
-#          url: /support_referencedocumentation.html
-#          output: web
-
