@@ -9,7 +9,28 @@ summary: Summary release notes of the versions released in Demographic Update Ev
 
 This site is under active development by NHS Digital and is intended to provide guidance and FHIR components for the Demographic Update Event Messages. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis, and remains subject to clinical review. Changes to this specification following the initial beta release will be documented here.
 
-## Beta 1.1.0 ##
+## 1.2.0-Beta (11/01/2019) ##
+
+[PDS Birth Notification](explore_pds_birth_notification.html)
+- Update of page format with additional detail on the resource population and message structure
+- Added introductory paragraph about trigger for event message from Spine
+- Added details related to MESH WorkflowID for this event message
+
+[PDS Change of Address](explore_pds_change_of_address.html)
+- Added introductory paragraph about trigger for event message from Spine
+- Added details related to MESH WorkflowID for this event message
+
+[PDS Change of GP](explore_pds_change_of_gp.html)
+- Added introductory paragraph about trigger for event message from Spine
+- Added details related to MESH WorkflowID for this event message
+
+[PDS Death Notification](explore_pds_death_notification.html)
+- Renamed from `PDS Person Death`
+- Added introductory paragraph about trigger for event message from Spine
+- Added details related to MESH WorkflowID for this event message
+
+
+## 1.1.0-Beta ##
 
 **About** - renamed to **Contact Us** - this page has been updated to share contact information. Guidance around FHIR profiles for event messages has been removed as it is not within the scope of this Implementation Guide. 
 
@@ -40,10 +61,10 @@ Following stakeholder feedback and INTEROPen curation, this implementation guida
 **Examples** 
 - all relevant example instances updated to reflect all of the changes above.
 
-## Beta 1.0.1 ##
+## 1.0.1-Beta ##
 This implementation guide has been updated to include a guidance page for accessing example messages.
  
-## Beta 1.0.0 ##
+## 1.0.0-Beta ##
 This Beta release includes implementation guidance to support the development of the Demographic Update Event Messages.
 
 
