@@ -9,6 +9,12 @@ summary: Summary release notes of the versions released in Demographic Update Ev
 
 This site is under active development by NHS Digital and is intended to provide guidance and FHIR components for the Demographic Update Event Messages. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis, and remains subject to clinical review. Changes to this specification following the initial beta release will be documented here.
 
+## 1.2.0-RC (23/01/2019) ##
+
+[PDS Change of GP](explore_pds_change_of_gp.html)
+- Updated the MESH WorkflowID
+
+
 ## 1.2.0-Beta (11/01/2019) ##
 
 [PDS Birth Notification](explore_pds_birth_notification.html)
