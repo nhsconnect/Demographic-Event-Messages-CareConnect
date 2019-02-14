@@ -93,7 +93,7 @@ This Patient resource included in the event message SHALL conform to the [CareCo
 | meta.versionId | 1..1 | This element will contain the serial change number (SCN) of the mothers patient record within Spine at the time this event was published. |
 | identifier | 1..1 | Patient NHS Number SHALL be included within the nhsNumber identifier slice |
 | name (official) | 1..1 | Patients name as registered on PDS, included within the resource as the `official` name element slice |
-| birthDate | 0..1 | The patient birth date shall be included in the patient resource |
+| birthDate | 1..1 | The patient birth date shall be included in the patient resource |
 | generalPractitioner | 0..1 | References to an organization representing the Mother's Primary Care provider, the reference organization should contain the organization ODS Code, name and relevant contact details. |
 | extension(registrationDetails).period.start | 0..1 | Date when the mother was registered with the organization. |
 | extension(registrationDetails).period.end | 0..1 | Date when the mothers registration is scheduled to end if applicable. |
