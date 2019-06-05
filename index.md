@@ -1,5 +1,5 @@
 ---
-title: Introduction to Demographics Update Event Messages
+title: Introduction to Demographics Update Event Messages (Care Connect)
 keywords: homepage
 tags: [overview]
 sidebar: overview_sidebar
