@@ -116,7 +116,7 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | telecom.use | 0..1 | Mapping between the FHIR values and PDS values is as per the table below. |
 | address.use | 0..1 | Mapping between the FHIR values and PDS values is as per the table below. |
 
-# Telecom System #
+#### Telecom System ####
 Mapping for the codes from the ValueSet [PDS-CommunicationContactMethod-1](https://fhir.nhs.uk/STU3/ValueSet/PDS-CommunicationContactMethod-1).
 
 | PDS Code | Equivalence | FHIR Code |
@@ -126,7 +126,7 @@ Mapping for the codes from the ValueSet [PDS-CommunicationContactMethod-1](https
 | tel | equivalent | phone |
 | textphone | equivalent | other |
 
-# Telecom Use #
+#### Telecom Use ####
 Mapping for the codes from the ValueSet [PDS-TelecomUsage-1](https://fhir.nhs.uk/STU3/ValueSet/PDS-TelecomUsage-1).
 
 | PDS Code | PDS Display | Equivalence | FHIR Code |
@@ -140,7 +140,7 @@ Mapping for the codes from the ValueSet [PDS-TelecomUsage-1](https://fhir.nhs.uk
 | PG | A paging device suitable to solicit a callback or to leave a very short message | equivalent | mobile |
 | WP | An office address | equivalent | work |
 
-# Address Use # 
+#### Address Use #### 
 Mapping for the codes from the ValueSet [PDS-AddressType-1](https://fhir.nhs.uk/STU3/ValueSet/PDS-AddressType-1).
 
 | PDS Code | PDS Display | Equivalence | FHIR Code |
