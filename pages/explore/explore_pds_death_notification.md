@@ -30,12 +30,12 @@ The below table is included to highlight the different types of Death Notificati
 |  | PDS Death Notification (Informal) | PDS Death Notification (Formal) | PDS Death Notification (Death Notification Status removed) |
 | --- | --- | --- | --- |
 | | Death notice received via an update from a local NHS Organisation such as GP or Trust | Death notice received from Registrar of Deaths | A revoke of a patient death event as the death was entered in error, the patient is NOT DEAD. |
-| **EMS-MessageHeader-1 Resource** |
+| **Event-MessageHeader-1 Resource** |
 | `extension(eventMessageType)` | Fixed value: `new` | Fixed value: `new` | Fixed value: `new` |
 | `event` | Fixed value: `pds-death-notification-1` | Fixed value: `pds-death-notification-1` | Fixed value: `pds-death-notification-1` |
-| **EMS-Communication-1 Resource** |
+| **CareConnect-Communication-1 Resource** |
 | `status` | Fixed value: `completed` | Fixed value: `completed` | Fixed value: `completed` |
-| **CareConnect-EMS-Patient-1** |
+| **CareConnect-Patient-1** |
 | `extension(deathNotificationStatus)` | Fixed value: 1 (Informal) | Fixed value: 2 (Formal) | Fixed value: U (Removed) |
 | `deceasedDateTime` | element populated with dateTime of death | element populated with dateTime of death | **element not included in resource** |
 
@@ -63,9 +63,9 @@ The Bundle resource is the container for the event message and SHALL conform to 
 | type | 1..1 | Fixed value: `message` |
 
 
-### [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1)
+### [Event-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/Event-MessageHeader-1)
 
-The MessageHeader resource included as part of the event message SHALL conform to the [EMS-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
+The MessageHeader resource included as part of the event message SHALL conform to the [Event-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/Event-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
 
 | Resource Cardinality | 1..1 |
 
@@ -73,12 +73,12 @@ The MessageHeader resource included as part of the event message SHALL conform t
 | --- | --- | --- |
 | extension(eventMessageType) | 1..1 | Will be populated as per the event life cycle table above. |
 | event | 1..1 | Fixed Value: pds-death-notification-1 (PDS Death Notification) |
-| focus | 1..1 | This will reference the "EMS-Communication-1" resource which contains information relating to the event message. |
+| focus | 1..1 | This will reference the "CareConnect-Communication-1" resource which contains information relating to the event message. |
 
 
-### [EMS-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Communication-1)
+### [CareConnect-Communication-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Communication-1)
 
-The Communication resource included in the event message SHALL conform to the [EMS-Communication-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-Communication-1) constrained FHIR profile and the additional population guidance as per the table below:
+The Communication resource included in the event message SHALL conform to the [CareConnect-Communication-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Communication-1) constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 1..1 |
 
@@ -88,21 +88,21 @@ The Communication resource included in the event message SHALL conform to the [E
 | payload | 1..1 | This will reference the patient resource representing the patient who is the focus of this event. |
 
 
-### [EMS-HealthcareService-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-HealthcareService-1)
+### [CareConnect-HealthcareService-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1)
 
-The HealthcareService resource included in the event message SHALL conform to the [EMS-HealthcareService-1](https://fhir.nhs.uk/STU3/StructureDefinition/EMS-HealthcareService-1) constrained FHIR profile and the additional population guidance as per the table below:
+The HealthcareService resource included in the event message SHALL conform to the [CareConnect-HealthcareService-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1) constrained FHIR profile and the additional population guidance as per the table below:
 
-| Resource Cardinality | TBC |
+| Resource Cardinality | 0..1 |
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | providedBy | 1..1 | This will reference the source organization of the event message. For PDS events this will be a reference to an organization resource which can be retrieved using the [ODS Lookup API](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) |
-| type | 1..1 | This will represent the type of service responsible for the event message. This will have a fixed value: PDS (Personal Demographics Service) |
+| type | 1..1 | This will represent the type of service responsible for the event message. This will have a fixed value from the ValueSet [EMS-HealthcareServiceType-1](https://fhir.nhs.uk/STU3/ValueSet/EMS-HealthcareServiceType-1): PDS (Personal Demographics Service) |
 
 
-### [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1)
+### [CareConnect-Patient-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1)
 
-The patient resource included in the event message SHALL conform to the [CareConnect-EMS-Patient-1](https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-EMS-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
+The patient resource included in the event message SHALL conform to the [CareConnect-Patient-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1) constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 1..1 |
 
@@ -112,9 +112,49 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | extension(deathNotificationStatus) | 1..1 | This will be populated as per the event life cycle table above. |
 | extension(systemEffectiveDate) | 1..1 | Element populated with dateTime when Death Notification Status was updated on the Spine. |
 | deceasedDateTime | 0..1 | This will be populated as per the event life cycle table above. |
+| telecom.system | 0..1 | Mapping between the FHIR values and PDS values is as per the table below. |
+| telecom.use | 0..1 | Mapping between the FHIR values and PDS values is as per the table below. |
+| address.use | 0..1 | Mapping between the FHIR values and PDS values is as per the table below. |
+
+# Telecom System #
+Mapping for the codes from the ValueSet [PDS-CommunicationContactMethod-1](https://fhir.nhs.uk/STU3/ValueSet/PDS-CommunicationContactMethod-1).
+
+| PDS Code | Equivalence | FHIR Code |
+| --- | --- | --- |
+| fax | equivalent | fax |
+| mailto | equivalent | email |
+| tel | equivalent | phone |
+| textphone | equivalent | other |
+
+# Telecom Use #
+Mapping for the codes from the ValueSet [PDS-TelecomUsage-1](https://fhir.nhs.uk/STU3/ValueSet/PDS-TelecomUsage-1).
+
+| PDS Code | PDS Display | Equivalence | FHIR Code |
+| --- | --- | --- |
+| AS | An automated answering machine | equivalent | home |
+| EC | A contact specifically designated to be used for emergencies | equivalent | home |
+| H | A communication address at a home | equivalent | home |
+| HP | The primary home, to reach a person after business hours | equivalent | home |
+| HV | A vacation home, to reach a person while on vacation | equivalent | temp |
+| MC | A telecommunication device that moves and stays with its owner | equivalent | mobile |
+| PG | A paging device suitable to solicit a callback or to leave a very short message | equivalent | mobile |
+| WP | An office address | equivalent | work |
+
+# Address Use # 
+Mapping for the codes from the ValueSet [PDS-AddressType-1](https://fhir.nhs.uk/STU3/ValueSet/PDS-AddressType-1).
+
+| PDS Code | PDS Display | Equivalence | FHIR Code |
+| --- | --- | --- |
+| H | Usual (home) address | equivalent | home |
+| PST | Correspondence address | equivalent | home |
+| TMP | Temporary address |equivalent | temp |
 
 
 ### [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1)
 
 References to Organization resources within this event message will use absolute URL reference which can be retrieved as described in the [FHIR ODS Lookup API Implementation guide](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) rather than including the organization resource within the event message bundle.
 
+
+### PDS Death Notification Example ###
+
+Placeholder for example
