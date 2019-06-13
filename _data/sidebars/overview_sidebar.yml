@@ -1,7 +1,7 @@
 entries:
 - title: Demographics Update Event Messages (Care Connect)  
   product: Demographics Update Event Messages (Care Connect) 
-  version: 1.0.0-Release Candidate
+  version: 2.0.0-Release Candidate
   levels: one
   folders:
 
@@ -32,6 +32,9 @@ entries:
       url: /explore_msg_architecture_overview.html
       output: web
       type: homepage
+    - title: Event Header Design
+      url: /explore_event_header_design.html
+      output: web
   - title: Messages
     output: web,pdf
     folderitems:
@@ -39,9 +42,9 @@ entries:
       url: /explore_example_messages.html
       output: web
       type: homepage
-    - title: PDS Birth Notification
-      url: /explore_pds_birth_notification.html
-      output: web
+#    - title: PDS Birth Notification
+#      url: /explore_pds_birth_notification.html
+#      output: web
     - title: PDS Change Of Address
       url: /explore_pds_change_of_address.html
       output: web
