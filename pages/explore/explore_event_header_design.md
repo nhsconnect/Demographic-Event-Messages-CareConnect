@@ -10,22 +10,42 @@ summary: "The standard event header information applicable to Patient Demographi
 ## Event header information ##
 Each event message will carry a standard set of event header information to help identify the patient, publisher, actual event, etc.
 
-This event header information must consist of the following **mandatory** items and their corresponding FHIR profiles and elements:
+The following FHIR profiles are used to form the Event Header within the Event Message Bundle:
 
-| Event Header item requirement          | FHIR resource                     | FHIR element                                                                |
-|----------------------------------------|-----------------------------------|-----------------------------------------------------------------------------|
-| patient identification data:           | CareConnect-Patient-1             |                                                                             |
-| NHS Number                             | CareConnect-Patient-1             | identifier using NHS Number slice                                           |
-| Date of Birth                          | CareConnect-Patient-1             | birthDate                                                                   |
-| name                                   | CareConnect-Patient-1             | name                                                                        |
-| event type                             | Event-MessageHeader-1             | event                                                                       |
-| type of service originating the event  | CareConnect--HealthcareService-1  | type                                                               |
-| service provider originating the event | CareConnect-Communication-1       | sender                                                                  |
-| IT system holding the event data       | Event-MessageHeader-1             | source                                                                      |
-| event date time                        | CareConnect-Communication-1       | received                                                                |
-| event publisher                        | Event-MessageHeader-1             | responsible                                                                 |
-| event published date                   | Event-MessageHeader-1             | timestamp                                                                   |
-| publication reference number           | Event-MessageHeader-1       | The resource identifier for the MessageHeader, which SHALL use a UUID format |
+- [Event-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/Event-MessageHeader-1)
+- [CareConnect-Communication-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Communication-1)
+- [CareConnect-Patient-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1)
+- [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1)
+- [CareConnect-HealthcareService-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1)
+
+## Header Structure
+
+Specifies mandatory referencing within the Event Message Bundle.
+
+<div style="text-align:center; margin-bottom:20px" >
+	<a href="images/explore/pds_header.png" target="_blank"><img src="images/explore/pds_header.png"></a><br/>
+	PDS Event Header <a href="images/explore/pds_header.png" target="_blank">(open in new TAB)</a>
+</div>
+
+## Data Item to FHIR mapping ##
+
+The Event Header must be populated with the following **mandatory** data items, mapped to the relevant FHIR resource and element:
+
+| Event Header item requirement          | FHIR resource                     | FHIR element                       | Additional Guidance                     |
+|----------------------------------------|-----------------------------------|------------------------------------|-----------------------------------------|
+| **Patient identification data:**       |
+| NHS Number                             | CareConnect-Patient-1             | identifier                         | using NHS Number slice                 |
+| Date of Birth                          | CareConnect-Patient-1             | birthDate                          |                                        |
+| Name                                   | CareConnect-Patient-1             | name                               |                                        |
+| **Event metadata:**                    |
+| Event type                             | Event-MessageHeader-1             | event                              |                                        |
+| type of service originating the event  | CareConnect--HealthcareService-1  | type                               |                                        |
+| service provider originating the event | CareConnect-Communication-1       | sender                             |                                        |
+| IT system holding the event data       | Event-MessageHeader-1             | source                             |                                        |
+| event date time                        | CareConnect-Communication-1       | received                           |                                        |
+| event publisher                        | Event-MessageHeader-1             | responsible                        |                                        |
+| event published date                   | Event-MessageHeader-1             | timestamp                          |                                        |
+| publication reference number           | Event-MessageHeader-1             | id                                 | resource identifier for the MessageHeader, which SHALL use a UUID format |
 
 The remaining resources in the message bundle depend on the Patient Demographics Service Event listed under the [Messages](explore.html) section.
 

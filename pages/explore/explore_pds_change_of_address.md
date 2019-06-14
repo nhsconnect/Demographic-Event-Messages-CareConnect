@@ -22,6 +22,8 @@ The following FHIR profiles are used to form the PDS Change of Address Event Mes
 
 ## Bundle structure
 
+Specifies mandatory referencing within the Event Message Bundle.
+
 <div style="text-align:center; margin-bottom:20px" >
 	<a href="images/explore/pds_header.png" target="_blank"><img src="images/explore/pds_header.png"></a><br/>
 	PDS Change of Address Bundle <a href="images/explore/pds_header.png" target="_blank">(open in new TAB)</a>
@@ -88,9 +90,6 @@ The Communication resource included in the event message SHALL conform to the [C
 | sender | 1..1 | This will reference the sending organization of the event message.<br/> For PDS events this will be a reference to a CareConnect-Organization-1 resource within the message bundle. **\***|
 | subject | 1..1 | This will reference the patient resource representing the patient who is the subject of this event. |
 
-**\*** Organization details may be retrieved using the [ODS Lookup API](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) as [ODSAPI-Organization-1](https://fhir.nhs.uk/STU3/StructureDefinition/ODSAPI-Organization-1) resources. These MUST then be transformed to [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) resources for use within the event message bundle.
-
-**NB:** 'responsible' and 'sender' organisations may be the same or different organisations, therefore requiring a single or two CareConnect-Organization-1 resources within the event message bundle.
 
 ### [CareConnect-Patient-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1)
 
@@ -163,11 +162,15 @@ The Organization resource(s) included in the event message SHALL conform to the 
 
 | Resource Cardinality | 1..2 |
 
-References to Organization resources within this event message will use absolute URL reference which can be retrieved as described in the [FHIR ODS Lookup API Implementation guide](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) rather than including the organization resource within the event message bundle.
-
 | Element | Cardinality | Additional Guidance |
-| --- | --- | --- |
-| providedBy | 1..1 | This will reference the source organization of the event message. For PDS events this will be a reference to an organization resource which can be retrieved using the [ODS Lookup API](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) |
+|---------|-------------|---------------------|
+| identifier.system | 1..1 | Fixed value: https://fhir.nhs.uk/Id/ods-organization-code |
+| identifier.system | 1..1 | Organisation's ODS Organization Code |
+| name | 1..1 | Organisation's Name |
+
+**\*** Organization details may be retrieved using the [ODS Lookup API](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) as [ODSAPI-Organization-1](https://fhir.nhs.uk/STU3/StructureDefinition/ODSAPI-Organization-1) resources. These MUST then be transformed to [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) resources for use within the event message bundle.
+
+**NB:** 'responsible' and 'sender' organisations may be the same or different organisations, therefore requiring a single or two CareConnect-Organization-1 resources within the event message bundle.
 
 
 ### [CareConnect-HealthcareService-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1)
@@ -178,8 +181,8 @@ The HealthcareService resource included in the event message SHALL conform to th
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
-| providedBy | 1..1 | This will reference the source organization of the event message. For PDS events this will be a reference to an organization resource which can be retrieved using the [ODS Lookup API](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) |
-| type | 1..1 | This will represent the type of service responsible for the event message. This will have a fixed value from the ValueSet [EMS-HealthcareServiceType-1](https://fhir.nhs.uk/STU3/ValueSet/EMS-HealthcareServiceType-1): PDS (Personal Demographics Service) |
+| providedBy | 1..1 | This will reference the 'sender' organization of the event message. |
+| type | 1..1 | Fixed value: PDS (Personal Demographics Service)<br/>This will represent the type of service responsible for the event message. This will have a fixed value from the ValueSet [EMS-HealthcareServiceType-1](https://fhir.nhs.uk/STU3/ValueSet/EMS-HealthcareServiceType-1) |
 
 
 ## PDS Change of Address Example ##
@@ -188,9 +191,9 @@ Placeholder for example gist
 
 ## Profile Change Mappings for PDS Change Of Address ##
 
-Placeholder for change text
+Profiles used in [Demographics Update Event Messages 1.2.1-Release Candidate](https://developer.nhs.uk/apis/demographicupdates-120-rc/index.html) are replaced with: 
 
-| Demographic-Event-Messages | Demographic-Event-Messages-CareConnect |
+| Demographics Update Event Messages | Demographics Update Event Messages (Care Connect) |
 |----------------------------|----------------------------------------|
 | EMS-Bundle-1 | Bundle |
 | EMS-MessageHeader-1 | Event-MessageHeader-1 |
