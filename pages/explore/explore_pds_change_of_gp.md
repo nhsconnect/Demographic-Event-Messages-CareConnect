@@ -149,7 +149,7 @@ The HealthcareService resource included in the event message SHALL conform to th
 
 ## PDS Change of GP Example ##
 
-Placeholder for example gist
+<script src="https://gist.github.com/IOPS-DEV/836841552b915c86f8aba90ebbc80642.js"></script>
 
 ## Profile Change Mappings for PDS Change Of GP ##
 

@@ -187,7 +187,7 @@ The HealthcareService resource included in the event message SHALL conform to th
 
 ## PDS Change of Address Example ##
 
-Placeholder for example gist
+<script src="https://gist.github.com/IOPS-DEV/828562b2e3edaec1ed43f48645f5376a.js"></script>
 
 ## Profile Change Mappings for PDS Change Of Address ##
 
