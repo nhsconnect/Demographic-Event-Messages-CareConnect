@@ -38,13 +38,13 @@ entries:
   - title: Messages
     output: web,pdf
     folderitems:
-    - title: Example Messages
-      url: /explore_example_messages.html
-      output: web
-      type: homepage
-#    - title: PDS Birth Notification
-#      url: /explore_pds_birth_notification.html
+#    - title: Example Messages
+#      url: /explore_example_messages.html
 #      output: web
+#      type: homepage
+    - title: PDS Birth Notification
+      url: /explore_pds_birth_notification.html
+      output: web
     - title: PDS Change Of Address
       url: /explore_pds_change_of_address.html
       output: web
