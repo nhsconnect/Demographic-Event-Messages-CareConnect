@@ -256,3 +256,26 @@ The Birth Notification event will contain organization resources containing addi
 | Partner Child Health Organisation Code | 1..1 |
 | Responsible Child Health Organisation Code | 0..1 |
 
+
+## Profile Change Mappings for PDS Birth Notification ##
+
+Profiles used in [Demographics Update Event Messages 1.2.1-Release Candidate](https://developer.nhs.uk/apis/demographicupdates-120-rc/index.html) are replaced with: 
+| Demographic-Event-Messages | Demographic-Event-Messages-CareConnect |
+|----------------------------|----------------------------------------|
+| EMS-Bundle-1 | Bundle |
+| EMS-MessageHeader-1 | Event-MessageHeader-1 |
+| CareConnect-Organization-1 | - |
+| EMS-HealthcareService-1 | CareConnect--HealthcareService-1 |
+| EMS-Communication-1 | CareConnect-Communication-1 |
+| CareConnect-EMS-Patient-1 | CareConnect-Patient-1 |
+| EMS-PDS-RelatedPerson-1 | CareConnect-RelatedPerson-1 |
+| CareConnect-EMS-PDS-Baby-Patient-1 | CareConnect-Patient-1 |
+| CareConnect-EMS-PDS-BirthWeight-Observation-1 | CareConnect-Observation-1 |
+| CareConnect-EMS-PDS-GestationAge-Observation-1 | CareConnect-Observation-1 |
+| CareConnect-EMS-PDS-NumberOfBirths-Observation-1 | CareConnect-Observation-1 |
+| CareConnect-EMS-PDS-StillbornIndicator-Observation-1 | CareConnect-Observation-1 |
+| CareConnect-EMS-PDS-SuspectedCongenitalAbnormalityIndicator-Observation-1 | CareConnect-Observation-1 |
+| CareConnect-EMS-PDS-DeliveryPlace-Organization-1 | CareConnect-Organization-1 |
+| CareConnect-EMS-PDS-RegisteringAuthority-Organization-1 | CareConnect-Organization-1 |
+| CareConnect-Practitioner-1 | - |
+
