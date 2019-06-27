@@ -50,6 +50,20 @@ The Event Header must be populated with the following **mandatory** data items, 
 The remaining resources in the message bundle depend on the Patient Demographics Service Event listed under the [Messages](explore.html) section.
 
 
+An **optional** event-sequence element may be sent which, if included, **must** contain at least one of:
+
+| DCH Event Header item requirement      | FHIR resource            | FHIR element                                                     |
+|----------------------------------------|--------------------------|------------------------------------------------------------------|
+| change timestamp         				 | Event-MessageHeader-1    | The resource meta.lastUpdated for the MessageHeader 				   |
+| sequence number         | Event-MessageHeader-1    | The resource meta.versionId for the MessageHeader 				   |
+
+
+
+The remaining resources in the bundle depend on the Event listed under the [Messages](explore.html) section.
+
+## Example Message Header ##
+
+<script src="https://gist.github.com/IOPS-DEV/a1d4a7f89b0658f3b9a0ace6dda09df9.js"></script>
 
 
 

@@ -218,7 +218,7 @@ The notifying practitioner for this event message.
 | subject | 1..1 | The stillborn indicator observation will reference the **baby** patient resource. |
 | valueCodeableConcept | 1..1 | Observation.valueCodeableConcept SHALL use a code from https://fhir.nhs.uk/STU3/CodeSystem/EMS-PDS-StillBornIndicator-1 |
 | valueCodeableConcept.coding.system | 1..1 | Fixed value: https://fhir.nhs.uk/STU3/CodeSystem/EMS-PDS-StillBornIndicator-1 |  
-| valueCodeableConcept.coding.code | 1..1 |  |
+| valueCodeableConcept.coding.code | 1..1 | Relevant indicator code |
 
 
 ### [CareConnect-Observation-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1) (Suspected Congenital Abnormality Indicator)
@@ -233,7 +233,7 @@ The notifying practitioner for this event message.
 | subject | 1..1 | This observation will reference the **baby** patient resource. |
 | valueCodeableConcept | 1..1 | Observation.valueCodeableConcept SHALL use a code from https://fhir.nhs.uk/STU3/CodeSystem/EMS-PDS-SuspectedCongenitalAbnormalityIndicator-1 |
 | valueCodeableConcept.coding.system | 1..1 | Fixed value: https://fhir.nhs.uk/STU3/CodeSystem/EMS-PDS-SuspectedCongenitalAbnormalityIndicator-1 |  
-| valueCodeableConcept.coding.code | 1..1 |  |
+| valueCodeableConcept.coding.code | 1..1 | Relevant indicator code |
 
 
 ### [CareConnect-EpisodeOfCare-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-EpisodeOfCare-1)
@@ -251,8 +251,8 @@ The Episode Of Care resources represent the association of the Patient (baby) wi
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | type.coding.system | 1..1 | Fixed value: https://fhir.nhs.uk/STU3/CodeSystem/BirthEpisodeCategory-1 |
-| type.coding.value | 1..1 | Fixed value: 1097291000000101 |  
-| type.coding.display | 1..1 | Fixed value: Suspected congenital abnormality || patient | 1..1 | This will reference the **baby** patient resource. |
+| type.coding.value | 1..1 | Fixed value: delivery-place |
+| type.coding.display | 1..1 | Fixed value: Delivery Place |
 | managingOrganization | 1..1 | This will reference the associated Organization resource |
 
 
@@ -262,19 +262,34 @@ The Episode Of Care resources represent the association of the Patient (baby) wi
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
-| patient | 1..1 | This will reference the **baby** patient resource. |
+| type.coding.system | 1..1 | Fixed value: https://fhir.nhs.uk/STU3/CodeSystem/BirthEpisodeCategory-1 |
+| type.coding.value | 1..1 | Fixed value: registering-authority |
+| type.coding.display | 1..1 | Fixed value: Registering Authority |
 | managingOrganization | 1..1 | This will reference the associated Organization resource |
 
 
 ### [CareConnect-EpisodeOfCare-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-EpisodeOfCare-1) (Partner Child Health Organisation)
 
+| Resource Cardinality | TBC |
+
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| type.coding.system | 1..1 | Fixed value: https://fhir.nhs.uk/STU3/CodeSystem/BirthEpisodeCategory-1 |
+| type.coding.value | 1..1 | Fixed value: partner-child-health-organisation |
+| type.coding.display | 1..1 | Fixed value: Partner Child Health Organisation |
+| managingOrganization | 1..1 | This will reference the associated Organization resource |
+
+
 ### [CareConnect-EpisodeOfCare-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-EpisodeOfCare-1) (Responsible Child Health Organisation)
+
 
 | Resource Cardinality | TBC |
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
-| patient | 1..1 | This will reference the **baby** patient resource. |
+| type.coding.system | 1..1 | Fixed value: https://fhir.nhs.uk/STU3/CodeSystem/BirthEpisodeCategory-1 |
+| type.coding.value | 1..1 | Fixed value: responsible-child-health-organisation |
+| type.coding.display | 1..1 | Fixed value: Responsible Child Health Organisation |
 | managingOrganization | 1..1 | This will reference the associated Organization resource |
 
 
@@ -316,13 +331,14 @@ The Birth Notification event will contain organization resources containing addi
 
 
 ## PDS Change of Address Example ##
-
+Placeholder for Birth Notification example - like it says, it's CoA
 <script src="https://gist.github.com/IOPS-DEV/828562b2e3edaec1ed43f48645f5376a.js"></script>
 
 
 ## Profile Change Mappings for PDS Birth Notification ##
 
-Profiles used in [Demographics Update Event Messages 1.2.1-Release Candidate](https://developer.nhs.uk/apis/demographicupdates-120-rc/index.html) are replaced with: 
+Profiles used in [Demographics Update Event Messages 1.2.1-Release Candidate](https://developer.nhs.uk/apis/demographicupdates-120-rc/index.html) are replaced with:
+
 | Demographic-Event-Messages | Demographic-Event-Messages-CareConnect |
 |----------------------------|----------------------------------------|
 | EMS-Bundle-1 | Bundle |
