@@ -42,7 +42,6 @@ The Event Header must be populated with the following **mandatory** data items, 
 | type of service originating the event  | CareConnect--HealthcareService-1  | type                               |                                        |
 | service provider originating the event | CareConnect-Communication-1       | sender                             |                                        |
 | IT system holding the event data       | Event-MessageHeader-1             | source                             |                                        |
-| event date time                        | CareConnect-Communication-1       | received                           |                                        |
 | event publisher                        | Event-MessageHeader-1             | responsible                        |                                        |
 | event published date                   | Event-MessageHeader-1             | timestamp                          |                                        |
 | publication reference number           | Event-MessageHeader-1             | id                                 | resource identifier for the MessageHeader, which SHALL use a UUID format |

@@ -18,35 +18,35 @@ The following FHIR profiles are used to form the PDS Death Notification Event Me
 - [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1)
 - [CareConnect-HealthcareService-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1)
 
-## Bundle structure
+## Bundle Structure
 
-Specifies mandatory referencing within the Event Message Bundle.
+Specifies referencing within the Event Message Bundle.
 
 <div style="text-align:center; margin-bottom:20px" >
 	<a href="images/explore/pds_header.png" target="_blank"><img src="images/explore/pds_header.png"></a><br/>
 	PDS Death Notification Bundle <a href="images/explore/pds_header.png" target="_blank">(open in new TAB)</a>
 </div>
 
-The `extension(deathNotificationStatus)` and `deceasedDateTime` elements within the patient resource are the main indicators of the patients death status.
+The `extension(deathNotificationStatus)` and `deceasedDateTime` elements within the patient resource are the main indicators of the patient's death status.
 
 
 ## PDS Death Notification Event Message Types ##
 
 The PDS Death Notification event message will be sent by the NEMS, following an update to the patient death information on PDS. This information includes the death notification status which may be updated should the patient’s death notification status change. The event message behaviour following each update to the patient’s death notification status is demonstrated in the table below:
 
-If a subscriber receives multiple `PDS Death Notification` event messages for the same patient, the latest event message as indicated by the `meta.lastUpdated` element within the MessageHeader resource should be considered the source of truth for the deathNotificationStatus. This is the specific dateTime on which the deathNotificationStatus was updated on PDS.
+If a subscriber receives multiple `PDS Death Notification` event messages for the same patient, the latest event message as indicated by the `meta.lastUpdated` element within the MessageHeader resource should be considered the source of truth for the deathNotificationStatus element. This is the specific dateTime on which the deathNotificationStatus element was updated on PDS.
 
 The below table is included to highlight the different types of Death Notification event message you may receive and the key elements within resource which help identify the type of Death Notification event message you have received. Additional guidance around the content of the FHIR resources is outlined in the `Resource population requirements and guidance` section below.
 
 |  | PDS Death Notification (Informal) | PDS Death Notification (Formal) | PDS Death Notification (Death Notification Status removed) |
 | --- | --- | --- | --- |
-| | Death notice received via an update from a local NHS Organisation such as GP or Trust | Death notice received from Registrar of Deaths | A revoke of a patient death event as the death was entered in error, the patient is NOT DEAD. |
+| | Death notice received via an update from a local NHS Organisation such as GP or Trust | Death notice received from Registrar of Deaths | A revoke of a patient death event, as the death was entered in error, i.e. the patient is _not dead_. |
 | **Event-MessageHeader-1 Resource** |
 | `extension(messageEventType)` | Fixed value: `new` | Fixed value: `new` | Fixed value: `new` |
 | `event` | Fixed value: `pds-death-notification-1` | Fixed value: `pds-death-notification-1` | Fixed value: `pds-death-notification-1` |
 | **CareConnect-Communication-1 Resource** |
 | `status` | Fixed value: `completed` | Fixed value: `completed` | Fixed value: `completed` |
-| **CareConnect-Patient-1** |
+| **CareConnect-Patient-1 Resource** |
 | `extension(deathNotificationStatus)` | Fixed value: 1 (Informal) | Fixed value: 2 (Formal) | Fixed value: U (Removed) |
 | `deceasedDateTime` | element populated with dateTime of death | element populated with dateTime of death | **element not included in resource** |
 
@@ -58,7 +58,7 @@ The delivery of the PDS Death Notification event messages to subscribers via MES
 | MESH WorkflowID | `CHILDHEALTH_DEATHNOTIFICATION_UPDATE` |
 
 
-## Resource population requirements and guidance ##
+## Resource Population Requirements and Guidance ##
 
 The following requirements and resource population guidance should be followed in addition to the requirements and guidance outlined in the [Event Header](https://developer.nhs.uk/apis/ems-beta/explore_event_header_information.html) requirements page.
 
@@ -76,7 +76,7 @@ The Bundle resource is the container for the event message and SHALL conform to 
 
 ### [Event-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/Event-MessageHeader-1)
 
-The MessageHeader resource included as part of the event message SHALL conform to the [Event-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/Event-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table bellow:
+The MessageHeader resource included as part of the event message SHALL conform to the [Event-MessageHeader-1](https://fhir.nhs.uk/STU3/StructureDefinition/Event-MessageHeader-1) constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 1..1 |
 
@@ -96,7 +96,7 @@ The Communication resource included in the event message SHALL conform to the [C
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | status | 1..1 | Fixed value: `completed` |
-| sender | 1..1 | This will reference the sending organization of the event message.<br/> For PDS events this will be a reference to a CareConnect-Organization-1 resource within the message bundle. **\***|
+| sender | 0..1 | This will reference the sending organization of the event message.<br/> For PDS events this will be a reference to a CareConnect-Organization-1 resource within the message bundle. **\***|
 | subject | 1..1 | This will reference the patient resource representing the patient who is the subject of this event. |
 
 
@@ -110,11 +110,12 @@ The patient resource included in the event message SHALL conform to the [CareCon
 | --- | --- | --- |
 | meta.versionId | 1..1 | This element will contain the serial change number (SCN) of the patient record within Spine at the time this event was published. |
 | extension(deathNotificationStatus) | 1..1 | This will be populated as per the event life cycle table above. |
-| extension(systemEffectiveDate) | 1..1 | Element populated with dateTime when Death Notification Status was updated on the Spine. |
+| extension(systemEffectiveDate) | 1..1 | Element populated with dateTime when Death Notification Status updated on the Spine. |
 | deceasedDateTime | 0..1 | This will be populated as per the event life cycle table above. |
-| telecom.system | 0..1 | Mapping between the FHIR values and PDS values is as per the table below. |
-| telecom.use | 0..1 | Mapping between the FHIR values and PDS values is as per the table below. |
-| address.use | 0..1 | Mapping between the FHIR values and PDS values is as per the table below. |
+| telecom | 0..1 | |
+| telecom.system | 1..1 | Sending systems SHALL map the PDS codesystem value to its FHIR equivalent as per the table below |
+| telecom.use | 0..1 | Sending systems SHALL map the PDS codesystem value to its FHIR equivalent as per the table below |
+| address.use | 0..1 | Sending systems SHALL map the PDS codesystem value to its FHIR equivalent as per the table below |
 
 #### Telecom System ####
 Mapping for the codes from the ValueSet [PDS-CommunicationContactMethod-1](https://fhir.nhs.uk/STU3/ValueSet/PDS-CommunicationContactMethod-1).
@@ -159,7 +160,7 @@ The Organization resource(s) included in the event message SHALL conform to the 
 | Element | Cardinality | Additional Guidance |
 |---------|-------------|---------------------|
 | identifier.system | 1..1 | Fixed value: https://fhir.nhs.uk/Id/ods-organization-code |
-| identifier.system | 1..1 | Organisation's ODS Organization Code |
+| identifier.value | 1..1 | Organisation's ODS Organization Code |
 | name | 1..1 | Organisation's Name |
 
 **\*** Organization details may be retrieved using the [ODS Lookup API](https://developer.nhs.uk/apis/ods/restfulapis_identification_organization.html) as [ODSAPI-Organization-1](https://fhir.nhs.uk/STU3/StructureDefinition/ODSAPI-Organization-1) resources. These MUST then be transformed to [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) resources for use within the event message bundle.
@@ -173,7 +174,7 @@ The HealthcareService resource included in the event message SHALL conform to th
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | providedBy | 1..1 | This will reference the 'sender' organization of the event message. |
-| type | 1..1 | Fixed value: PDS (Personal Demographics Service)<br/>This will represent the type of service responsible for the event message. This will have a fixed value from the ValueSet [EMS-HealthcareServiceType-1](https://fhir.nhs.uk/STU3/ValueSet/EMS-HealthcareServiceType-1) |
+| type | 1..1 | Fixed value: PDS (Personal Demographics Service)<br/>This will represent the type of service responsible for the event message. This will have a value from the ValueSet [EMS-HealthcareServiceType-1](https://fhir.nhs.uk/STU3/ValueSet/EMS-HealthcareServiceType-1) |
 
 ### PDS Death Notification Example ###
 
@@ -196,4 +197,4 @@ Profiles used in [Demographics Update Event Messages 1.2.1-Release Candidate](ht
 | EMS-Communication-1 | CareConnect-Communication-1 |
 | CareConnect-EMS-Patient-1 | CareConnect-Patient-1 |
 | CareConnect-Organization-1 | - |
-| EMS-HealthServices-1 | CareConnect-HealthServices-1 |
+| EMS-HealthServices-1 | CareConnect-HealthService-1 |
