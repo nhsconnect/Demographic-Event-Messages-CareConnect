@@ -20,7 +20,7 @@ The following FHIR profiles are used to form the Event Header within the Event M
 
 ## Header Structure
 
-Specifies mandatory referencing within the Event Message Bundle.
+Specifies referencing within the Event Message Bundle.
 
 <div style="text-align:center; margin-bottom:20px" >
 	<a href="images/explore/pds_header.png" target="_blank"><img src="images/explore/pds_header.png"></a><br/>
